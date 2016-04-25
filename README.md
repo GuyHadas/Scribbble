@@ -136,8 +136,8 @@ user interface.
 [phase-five]: ./docs/phases/phase5.md
 
 ### Phase Details
-![phase-one]
-![phase-two]
-![phase-three]
-![phase-four]
-![phase-five]
+* [Phase One][phase-one]
+* [Phase Two][phase-two]
+* [Phase Three][phase-three]
+* [Phase Four][phase-four]
+* [Phase Five][phase-five]
