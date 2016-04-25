@@ -1,4 +1,4 @@
-# Phase 4: Allow Complex Styling in Notes (1 day)
+# Phase 4: Basic Styling (0.5 days)
 
 ## Rails
 ### Models
@@ -15,4 +15,3 @@
 ### Actions
 
 ## Gems/Libraries
-* react-quill (npm)

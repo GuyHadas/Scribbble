@@ -1,37 +1,39 @@
-# Phase 2: Flux Architecture and Note CRUD (2 days)
+# Phase 2: Design Model, API, and basic APIUtil and Router (2 days)
 
 ## Rails
 ### Models
+* Design
 
 ### Controllers
+* Api::DesignsController
 
 ### Views
+* index.json.jbuilder
+* show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+
 
 ### Stores
-* Note
+* DesignStore
 
 ### Actions
-* ApiActions.receiveAllNotes -> triggered by ApiUtil
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
-* NoteActions.fetchAllNotes -> triggers ApiUtil
-* NoteActions.fetchSingleNote 
-* NoteActions.createNote
-* NoteActions.editNote 
-* NoteActions.destroyNote
+* ServerActions.receiveAllNotes -> triggered by ApiUtil, sends dispatch
+* ServerActions.receiveSingleNote -> triggered by ApiUtil, sends dispatch
+* ServerActions.deleteNote -> triggered by ApiUtil, sends dispatch
+* ClientActions.fetchAllDesigns -> triggers ApiUtil
+* ClientActions.fetchSingleDesign -> triggers ApiUtil
+* ClientActions.createDesign -> triggers ApiUtil
+* ClientActions.editDesign -> triggers ApiUtil
+* ClientActions.destroyDesign -> triggers ApiUtil
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.fetchAllDesigns
+* ApiUtil.fetchSingleDesigns
+* ApiUtil.createDesign
+* ApiUtil.editDesign
+* ApiUtil.destroyDesign
 
 ## Gems/Libraries
 * Flux Dispatcher (npm)

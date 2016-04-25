@@ -45,7 +45,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 
 ## Implementation Timeline
 
-### Phase 1: Backend setup and User Authentication (1 day)
+### Phase 1: User Authentication (1 day)
 
 **Objective:** Functioning rails project with Authentication
 
@@ -55,7 +55,7 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] user signup/signin pages
 - [ ] blank landing page after signin
 
-### Phase 2: Design Model, API, and basic APIUtil (1.5 days)
+### Phase 2: Design Model, API, and basic APIUtil and Router (2 days)
 
 **Objective:** Notes can be created, read, edited and destroyed through
 the API.
@@ -64,17 +64,18 @@ the API.
 - [ ] seed the database with a small amount of test data
 - [ ] CRUD API for notes (`DesignController`)
 - [ ] jBuilder views for Designs
-- [ ] setup Webpack & Flux scaffold
+- [ ] setup Webpack and npmInstalls
+- [ ] setup Flux scaffold
 - [ ] setup `APIUtil` to interact with the API
 - [ ] setup Design Flux Loop, except for components
+- [ ] setup React Router
 - [ ] test out API interaction in the console.
 
-### Phase 3: Flux Components and Router (1.5 days)
+### Phase 3: Flux Design Components (1 day)
 
 **Objective:** Designs can be created, read, edited and destroyed with the
 user interface.
 
-- [ ] setup React Router
 - implement each Design component
   - [ ] `DesignsIndex`
   - [ ] `DesignsIndexItem`
@@ -82,7 +83,7 @@ user interface.
   - [ ] `DesignCreateForm`
   - [ ] `DesignEditForm`
 
-### Phase 4: Start Styling (0.5 days)
+### Phase 4: Basic Styling (0.5 days)
 
 **Objective:** Existing pages (including signup/signin) will look good.
 
@@ -90,7 +91,7 @@ user interface.
 - [ ] position elements on the page
 - [ ] add basic colors & styles
 
-### Phase 5: Comments (2 day)
+### Phase 5: Comments (2 days)
 
 **Objective:** Comments belong to Designs, only viewable on Design Show page.
 
@@ -111,7 +112,7 @@ user interface.
 - [ ] Comment Styles are finalized
 - [ ] Seed the database with assortment of designs and comments
 
-### Phase 7: UX Features (1 days)
+### Phase 7: UX Features (1 day)
 
 **objective:** Implement various UX features
 
@@ -120,7 +121,7 @@ user interface.
 - [ ] Hover on Designs index brings up preview of design title/description
 - [ ] Add transitions, modals, and other styling flourishes
 - [ ] Mobile responsive using Bootstraps classes
-- [ ] Add loading gif throughout site 
+- [ ] Add loading gif throughout site
 
 ### Bonus Features (TBD)
 - [ ] Allow User to filter index to only designs they've created.
@@ -133,3 +134,10 @@ user interface.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+
+### Phase Details
+![phase-one]
+![phase-two]
+![phase-three]
+![phase-four]
+![phase-five]
