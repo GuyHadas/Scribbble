@@ -76,8 +76,8 @@ user interface.
 
 - [ ] setup React Router
 - implement each Design component
-  - [ ] `DesignIndex`
-  - [ ] `DesignIndexItem`
+  - [ ] `DesignsIndex`
+  - [ ] `DesignsIndexItem`
   - [ ] `DesignShow`
   - [ ] `DesignCreateForm`
   - [ ] `DesignEditForm`
@@ -117,8 +117,10 @@ user interface.
 
 - [ ] When on Design show, can navigate to previous/next design in index
 - [ ] Demo sign in updates as the username/password is typed in
-- [ ] Hover on Design index brings up preview of design title/description
+- [ ] Hover on Designs index brings up preview of design title/description
 - [ ] Add transitions, modals, and other styling flourishes
+- [ ] Mobile responsive using Bootstraps classes
+- [ ] Add loading gif throughout site 
 
 ### Bonus Features (TBD)
 - [ ] Allow User to filter index to only designs they've created.
