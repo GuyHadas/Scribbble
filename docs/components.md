@@ -1,13 +1,4 @@
 ## Component Hierarchy
 
-* `App`
-  * `SearchIndex`
-  * `NotebooksIndex`
-    * `NotebookIndexItem`
-  * `NotebookForm`
-  * `NotesIndex`
-    * `NoteForm`
-    * `NoteIndexItem`
-  * `NoteDetail`
-    * `NoteTags`
-    * `NoteEditArea`
+![design-form]
+[design-form]: ./wireframes/component_heirarchy.png
