@@ -1,6 +1,6 @@
 # Scribbble
 
-[Heroku link][heroku]
+[Check out Scribbble][heroku]
 
 [heroku]: https://scribbble.herokuapp.com/
 
