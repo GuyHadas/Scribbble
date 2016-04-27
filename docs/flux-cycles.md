@@ -31,7 +31,7 @@ what you'll need to do.
   0. `GET /api/design/:designId` is called.
   0. `receiveSingleDesign` is set as the callback, comes with comments.
 
-* `updateDesign`
+* `editDesign`
   0. invoked from `DesignForm` `onSubmit`
   0. `PATCH /api/designs/:designId` is called.
   0. `receiveSingleDesign` is set as the callback.
@@ -47,11 +47,11 @@ what you'll need to do.
   0. invoked from an API callback.
   0. `Design` store updates `_designs` and emits change.
 
-* `receiveSingleNote`
+* `receiveSingleDesign`
   0. invoked from an API callback.
   0. `Design` store updates `_designs[id]` and emits change.
 
-* `removeNote`
+* `removeDesign`
   0. invoked from an API callback.
   0. `Design` store removes `_designs[id]` and emits change.
 

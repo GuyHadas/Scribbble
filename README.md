@@ -52,17 +52,17 @@ progress. Put an x between the brackets for a checkmark: [x] -->
 - [ ] create new project
 - [ ] create `User` model
 - [ ] authentication
-- [ ] user signup/signin pages
+- [ ] user signup/signin using FrontEnd Auth
 - [ ] blank landing page after signin
 
 ### Phase 2: Design Model, API, and basic APIUtil and Router (2 days)
 
-**Objective:** Notes can be created, read, edited and destroyed through
+**Objective:** Designs can be created, read, edited and destroyed through
 the API.
 
 - [ ] create `Design` model
 - [ ] seed the database with a small amount of test data
-- [ ] CRUD API for notes (`DesignController`)
+- [ ] CRUD API for designs (`DesignController`)
 - [ ] jBuilder views for Designs
 - [ ] setup Webpack and npmInstalls
 - [ ] setup Flux scaffold
@@ -70,6 +70,7 @@ the API.
 - [ ] setup Design Flux Loop, except for components
 - [ ] setup React Router
 - [ ] test out API interaction in the console.
+- [ ] integrate Cloudinary for image uploading
 
 ### Phase 3: Flux Design Components (1 day)
 
@@ -124,10 +125,11 @@ user interface.
 - [ ] Add loading gif throughout site
 
 ### Bonus Features (TBD)
+- [ ] Designs have Tags and Taggings and are searchable.
 - [ ] Allow User to filter index to only designs they've created.
 - [ ] Pagination / infinite scroll for Designs Index
+- [ ] Additional UX features
 - [ ] Add ability to like designs and comments
-- [ ] Update Views to include likes Create, Delete, and lke count
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

@@ -19,9 +19,9 @@
 * DesignStore
 
 ### Actions
-* ServerActions.receiveAllNotes -> triggered by ApiUtil, sends dispatch
-* ServerActions.receiveSingleNote -> triggered by ApiUtil, sends dispatch
-* ServerActions.deleteNote -> triggered by ApiUtil, sends dispatch
+* ServerActions.receiveAllDesigns -> triggered by ApiUtil, sends dispatch
+* ServerActions.receiveSingleDesign -> triggered by ApiUtil, sends dispatch
+* ServerActions.deleteDesign -> triggered by ApiUtil, sends dispatch
 * ClientActions.fetchAllDesigns -> triggers ApiUtil
 * ClientActions.fetchSingleDesign -> triggers ApiUtil
 * ClientActions.createDesign -> triggers ApiUtil
@@ -38,3 +38,4 @@
 ## Gems/Libraries
 * Flux Dispatcher (npm)
 * Twitter Bootstrap
+* Cloudinary

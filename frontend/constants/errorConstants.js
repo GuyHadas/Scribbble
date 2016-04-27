@@ -1,0 +1,4 @@
+module.exports = {
+  ERRORS_RECEIVED: "ERRORS_RECEIVED",
+  CLEAR_ERRORS: "CLEAR_ERRORS"
+};
