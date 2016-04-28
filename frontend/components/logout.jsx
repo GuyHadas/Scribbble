@@ -12,7 +12,7 @@ var Logout = React.createClass({
 
   render: function() {
     return (
-      <button onClick={this.logoutUser}>Logout</button>
+      <span className="nav-session-button" onClick={this.logoutUser}>Logout</span>
     );
   }
 });

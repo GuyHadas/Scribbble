@@ -28,9 +28,20 @@ var Login = React.createClass({
 
   render: function() {
     return (
-      <form onSubmit={this.submitHandler} >
-        <input type="text" value={this.state.username} onChange={this.usernameChange}/>
-        <input type="password" value={this.state.password} onChange={this.passwordChange}/>
+      <form className="modal-form" onSubmit={this.submitHandler}>
+        <input type="text"
+          className="formTextbox"
+          value={this.state.username}
+          onChange={this.usernameChange}
+          placeholder="Username"
+          />
+
+        <input type="password"
+          className="formTextbox"
+          value={this.state.password}
+          onChange={this.passwordChange}
+          placeholder="Password"/>
+
         <input type="submit" value="Login"/>
       </form>
     );

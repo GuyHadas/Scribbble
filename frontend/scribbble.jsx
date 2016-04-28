@@ -9,9 +9,12 @@ var HashHistory = require('react-router').hashHistory;
 
 var Home = require("./components/home.jsx");
 var Navbar = require("./components/navbar.jsx");
+var DesignIndex = require("./components/designIndex.jsx");
+
+var Modal = require("react-modal");
 
 var Scribbble = React.createClass({
-  
+
   render: function() {
     return (
       <div>
@@ -25,10 +28,13 @@ var Scribbble = React.createClass({
 var routes = (
   <Route path="/" component={Scribbble}>
     <IndexRoute component={Home}/>
+    <Route path="designs" component={DesignIndex}>
+    </Route>
   </Route>
 );
 
 document.addEventListener("DOMContentLoaded", function(){
+  Modal.setAppElement(document.body);
   ReactDOM.render(
     <Router history={HashHistory}>
       {routes}
