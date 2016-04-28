@@ -82,7 +82,7 @@ var Navbar = React.createClass({
     return (
       <nav>
         <div className="nav-elements">
-          <span id="nav-logo">Logo</span>
+          <img src="scribbble-logo.png" id="nav-logo"/>
           {sessionButtons}
           <Modal isOpen={this.state.modalOpen}
                   onRequestClose={this.closeModal}
