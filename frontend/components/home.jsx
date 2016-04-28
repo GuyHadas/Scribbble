@@ -18,15 +18,15 @@ var Home = React.createClass({
   componentDidMount: function() {
     this.userStoreListener = UserStore.addListener(this.__onChange);
     ClientActions.fetchCurrentUser();
-    // if (this.state.currentUser) {
-    //   HashHistory.push("/designs");
-    // }
+    if (this.state.currentUser) {
+      HashHistory.push("/designs");
+    }
   },
 
   componentDidUpdate: function() {
-    // if (this.state.currentUser) {
-    //   HashHistory.push("/designs");
-    // }
+    if (this.state.currentUser) {
+      HashHistory.push("/designs");
+    }
   },
 
   componentWillUnmount: function() {

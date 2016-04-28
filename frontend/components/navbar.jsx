@@ -20,10 +20,8 @@ var Navbar = React.createClass({
   },
 
   closeModal: function(){
-    if (this.state.modalOpen) {
-      this.setState({ modalOpen: false});
-      SessionModalStyle.content.opacity = 0;
-    }
+    this.setState({ modalOpen: false});
+    SessionModalStyle.content.opacity = 0;
   },
 
   openModal: function(bool) {
@@ -45,7 +43,7 @@ var Navbar = React.createClass({
   },
 
   componentDidUpdate: function() {
-    if (this.state.currentUser) {
+    if (this.state.currentUser && this.state.modalOpen) {
       this.closeModal();
     }
   },
