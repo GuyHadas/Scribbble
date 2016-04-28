@@ -20,8 +20,10 @@ var Navbar = React.createClass({
   },
 
   closeModal: function(){
-    this.setState({ modalOpen: false});
-    SessionModalStyle.content.opacity = 0;
+    if (this.state.modalOpen) {
+      this.setState({ modalOpen: false});
+      SessionModalStyle.content.opacity = 0;
+    }
   },
 
   openModal: function(bool) {
@@ -32,10 +34,9 @@ var Navbar = React.createClass({
     SessionModalStyle.content.opacity = 100;
   },
 
-
   componentDidMount: function() {
-    this.userStoreListener = UserStore.addListener(this.__onChange);
-    this.errorStoreListener = ErrorStore.addListener(this.__onChange);
+    this.userStoreListener = UserStore.addListener(this.__onUserChange);
+    this.errorStoreListener = ErrorStore.addListener(this.__onErrorChange);
   },
 
   componentWillUnmount: function() {
@@ -49,13 +50,16 @@ var Navbar = React.createClass({
     }
   },
 
-  __onChange: function() {
-    this.setState({ currentUser: UserStore.currentUser(), errors: ErrorStore.all() });
+  __onUserChange: function() {
+    this.setState({ currentUser: UserStore.currentUser() });
+  },
+
+  __onErrorChange: function() {
+    this.setState({ errors: ErrorStore.all() });
   },
 
   render: function() {
-
-    var modalForm = this.state.signIn ? <LogIn closeModal={this.closeModal}/> : <SignUp closeModal={this.closeModal}/>;
+    var modalForm = this.state.signIn ? <LogIn /> : <SignUp />;
 
     if (this.state.errors.length > 0) {
       var errors = <Errors errors={this.state.errors}/>;
@@ -76,6 +80,7 @@ var Navbar = React.createClass({
         </span>
       </div>;
     }
+
     return (
       <nav>
         <div className="nav-elements">

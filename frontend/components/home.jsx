@@ -12,15 +12,22 @@ var SignUp = require("./signup.jsx");
 var Home = React.createClass({
 
   getInitialState: function(){
-    return { currentUser: UserStore.currentUser };
+    return { currentUser: UserStore.currentUser() };
   },
 
   componentDidMount: function() {
     this.userStoreListener = UserStore.addListener(this.__onChange);
     ClientActions.fetchCurrentUser();
+    // if (this.state.currentUser) {
+    //   HashHistory.push("/designs");
+    // }
   },
 
-  
+  componentDidUpdate: function() {
+    // if (this.state.currentUser) {
+    //   HashHistory.push("/designs");
+    // }
+  },
 
   componentWillUnmount: function() {
     this.userStoreListener.remove();

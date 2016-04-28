@@ -26,25 +26,25 @@ var clientActions = {
     });
   },
 
-  getDesign: function(designId) {
-    ApiUtil.getDesign(designId);
-  },
-
-  deleteDesign: function(designId) {
-    ApiUtil.deleteDesign(designId);
-  },
-
-  fetchDesigns: function() {
-    ApiUtil.fetchDesigns();
-  },
-
-  updateDesign: function(design) {
-    ApiUtil.updateDesign(design);
-  },
-
-  createDesign: function(design) {
-    ApiUtil.createDesign(design);
-  }
+  // getDesign: function(designId) {
+  //   ApiUtil.getDesign(designId);
+  // },
+  //
+  // deleteDesign: function(designId) {
+  //   ApiUtil.deleteDesign(designId);
+  // },
+  //
+  // fetchDesigns: function() {
+  //   ApiUtil.fetchDesigns();
+  // },
+  //
+  // updateDesign: function(design) {
+  //   ApiUtil.updateDesign(design);
+  // },
+  //
+  // createDesign: function(design) {
+  //   ApiUtil.createDesign(design);
+  // }
 };
 
 module.exports = clientActions;

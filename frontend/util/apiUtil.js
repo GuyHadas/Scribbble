@@ -50,62 +50,62 @@ var ApiUtil = {
     });
   },
 
-  getDesign: function(designId) {
-    $.ajax({
-      type: 'GET',
-      url: 'api/designs/' + designId.toString(),
-      success: function(design) {
-        DesignActions.receiveDesign(design);
-      },
-    });
-  },
-
-  deleteDesign: function(designId) {
-    $.ajax({
-      type: 'DELETE',
-      url: 'api/designs/' + designId.toString(),
-      success: function(design) {
-        DesignActions.removeDesign(design);
-      },
-    });
-  },
-
-  fetchDesigns: function() {
-    $.ajax({
-      type: 'GET',
-      url: 'api/designs',
-      success: function(designs) {
-        DesignActions.receiveDesigns(designs);
-      }
-    });
-  },
-
-  updateDesign: function(design) {
-    $.ajax({
-      type: 'PATCH',
-      url: 'api/designs/' + design.id.toString(),
-      data: {design: { title: design.title,
-                       description: design.description,
-                       design_url: design.design_url,
-                       user_id: design.user_id }},
-     success: function(updatedDesign) {
-       DesignActions.receiveDesign(updatedDesign);
-     }
-    });
-  },
-
-  createDesign: function(design) {
-    $.ajax({
-      type: 'POST',
-      url: 'api/designs',
-      data: {design: { title: design.title,
-                       description: design.description,
-                       design_url: design.design_url }},
-     success: function(updatedDesign) {
-       DesignActions.receiveDesign(updatedDesign);
-     }
-    });
-  },
+  // getDesign: function(designId) {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: 'api/designs/' + designId.toString(),
+  //     success: function(design) {
+  //       DesignActions.receiveDesign(design);
+  //     },
+  //   });
+  // },
+  //
+  // deleteDesign: function(designId) {
+  //   $.ajax({
+  //     type: 'DELETE',
+  //     url: 'api/designs/' + designId.toString(),
+  //     success: function(design) {
+  //       DesignActions.removeDesign(design);
+  //     },
+  //   });
+  // },
+  //
+  // fetchDesigns: function() {
+  //   $.ajax({
+  //     type: 'GET',
+  //     url: 'api/designs',
+  //     success: function(designs) {
+  //       DesignActions.receiveDesigns(designs);
+  //     }
+  //   });
+  // },
+  //
+  // updateDesign: function(design) {
+  //   $.ajax({
+  //     type: 'PATCH',
+  //     url: 'api/designs/' + design.id.toString(),
+  //     data: {design: { title: design.title,
+  //                      description: design.description,
+  //                      design_url: design.design_url,
+  //                      user_id: design.user_id }},
+  //    success: function(updatedDesign) {
+  //      DesignActions.receiveDesign(updatedDesign);
+  //    }
+  //   });
+  // },
+  //
+  // createDesign: function(design) {
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: 'api/designs',
+  //     data: {design: { title: design.title,
+  //                      description: design.description,
+  //                      design_url: design.design_url }},
+  //    success: function(updatedDesign) {
+  //      DesignActions.receiveDesign(updatedDesign);
+  //    }
+  //   });
+  // },
 
 };
 
