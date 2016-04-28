@@ -10,6 +10,13 @@ var SignUp = React.createClass({
     return {username: "", password: ""};
   },
 
+  componentDidMount: function() {
+    var self = this;
+    setTimeout(function() {
+      ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
+      500);
+  },
+
   submitHandler: function(e) {
     e.preventDefault();
     ClientActions.clearErrors();
@@ -30,11 +37,12 @@ var SignUp = React.createClass({
     return (
       <form className="modal-form" onSubmit={this.submitHandler} >
         <input type="text"
+          ref="autoFocus"
           className="formTextbox"
           value={this.state.username}
           onChange={this.usernameChange}
           placeholder="Username"/>
-        
+
         <input type="password"
           className="formTextbox"
           value={this.state.password}

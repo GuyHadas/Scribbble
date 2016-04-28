@@ -16,6 +16,13 @@ var Login = React.createClass({
     ClientActions.loginUser(this.state);
   },
 
+  componentDidMount: function() {
+    var self = this;
+    setTimeout(function() {
+      ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
+      500);
+  },
+
   usernameChange: function(e) {
     e.preventDefault();
     this.setState({username: e.target.value});
@@ -29,9 +36,10 @@ var Login = React.createClass({
   render: function() {
     return (
       <form className="modal-form" onSubmit={this.submitHandler}>
-        <input type="text"
+        <input
+          type="text"
           className="formTextbox"
-          autoFocus={true}
+          ref="autoFocus"
           value={this.state.username}
           onChange={this.usernameChange}
           placeholder="Username"
