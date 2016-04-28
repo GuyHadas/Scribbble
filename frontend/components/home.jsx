@@ -17,7 +17,6 @@ var Home = React.createClass({
 
   componentDidMount: function() {
     this.userStoreListener = UserStore.addListener(this.__onChange);
-    ClientActions.fetchCurrentUser();
     if (this.state.currentUser) {
       HashHistory.push("/designs");
     }

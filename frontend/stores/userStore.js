@@ -2,7 +2,8 @@ var Store = require('flux/utils').Store;
 var dispatcher = require('../dispatcher/dispatcher');
 var UserConstants = require("../constants/userConstants.js");
 
-var _currentUser = null;
+var myStorage = localStorage;
+var _currentUser = JSON.parse(myStorage.getItem("currentUser"));
 
 var UserStore = new Store(dispatcher);
 
@@ -15,17 +16,22 @@ UserStore.loggedIn = function() {
 };
 
 UserStore.currentUser = function() {
-  return _currentUser;
+  if (myStorage.getItem("currentUser") === "false") {
+    return null;
+  } else {
+    return _currentUser;
+  }
 };
 
 UserStore.__onDispatch = function (payload) {
   switch (payload.actionType) {
     case UserConstants.CURRENT_USER_RECEIVED:
       _currentUser = payload.currentUser;
+      myStorage.setItem("currentUser", JSON.stringify(payload.currentUser));
       UserStore.__emitChange();
       break;
     case UserConstants.LOGOUT_USER:
-      _currentUser = null;
+      myStorage.setItem("currentUser", "false");
       UserStore.__emitChange();
       break;
   }

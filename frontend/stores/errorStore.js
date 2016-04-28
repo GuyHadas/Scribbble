@@ -12,7 +12,9 @@ ErrorStore.all = function () {
 };
 
 var resetErrors = function(errors) {
-  _errors = errors.responseJSON.errors;
+  if (errors) {
+    _errors = errors.responseJSON.errors;    
+  }
 };
 
 ErrorStore.__onDispatch = function (payload) {

@@ -1,0 +1,25 @@
+.design-index-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  flex-wrap: wrap;
+}
+
+.design-card {
+  margin: 15px;
+  width: 400px;
+  height: 300px;
+  border: 1px solid #ccc;
+}
+
+
+img {
+  width: 400px;
+  height: 300px;
+}
+
+
+/*small 400x300
+big 800x600*/

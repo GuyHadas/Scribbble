@@ -6,8 +6,10 @@ var HashHistory = require('react-router').hashHistory;
 var Errors = React.createClass({
 
   render: function() {
+    var key = 0;
     var errorsList = this.props.errors.map(function(error) {
-      return <li>{error}</li>;
+      key += 1;
+      return <li key={key}>{error}</li>;
     });
 
     return (
