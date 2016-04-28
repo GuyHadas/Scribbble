@@ -31,6 +31,7 @@ var Login = React.createClass({
       <form className="modal-form" onSubmit={this.submitHandler}>
         <input type="text"
           className="formTextbox"
+          autoFocus={true}
           value={this.state.username}
           onChange={this.usernameChange}
           placeholder="Username"

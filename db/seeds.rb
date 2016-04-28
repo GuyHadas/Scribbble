@@ -66,6 +66,13 @@ designs = Design.create([
   },
 
   {
+    title: "Husky Love",
+    description: "What my dog does all day long.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/419081/screenshots/2418721/dog03.gif",
+    user_id: 12
+  },
+
+  {
     title: "Sail with me",
     description: "My favorite of my line designs. Think I'm goint to go with this one as my cover.",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/28941/screenshots/2680015/boat.jpg",
@@ -91,6 +98,13 @@ designs = Design.create([
     description: "I scream for eyes cream",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/1060640/screenshots/2681036/gelato-dribbble1.png",
     user_id: 9
+  },
+
+  {
+    title: "Rude Goldberg Happy Birthday Machine",
+    description: "Dear Scribbble, I hope you find this machine useful to make that moment when everybody sing staring at you a little less awkward. Happy birthday!",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/291221/screenshots/1632938/dribbble_5_yearl.gif",
+    user_id: 6
   },
 
   {
