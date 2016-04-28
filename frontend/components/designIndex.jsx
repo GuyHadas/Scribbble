@@ -18,6 +18,9 @@ var DesignIndex = React.createClass({
     this.designStoreListener = DesignStore.addListener(this.__onDesignsChange);
     this.userStoreListener = UserStore.addListener(this.__onUserChange);
     ClientActions.fetchDesigns();
+    if (!this.state.currentUser) {
+      HashHistory.push("/");
+    }
   },
 
   __onDesignsChange: function() {
@@ -25,11 +28,18 @@ var DesignIndex = React.createClass({
   },
 
   __onUserChange: function() {
-    this.setState({ currentUser: UserStore.all() });
+    this.setState({ currentUser: UserStore.currentUser() });
   },
 
   componentWillUnmount: function() {
     this.designStoreListener.remove();
+    this.userStoreListener.remove();
+  },
+
+  componentDidUpdate: function() {
+    if (!this.state.currentUser) {
+      HashHistory.push("/");
+    }
   },
 
   render: function() {

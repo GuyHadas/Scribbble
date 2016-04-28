@@ -31,6 +31,7 @@ UserStore.__onDispatch = function (payload) {
       UserStore.__emitChange();
       break;
     case UserConstants.LOGOUT_USER:
+      _currentUser = null;
       myStorage.setItem("currentUser", "false");
       UserStore.__emitChange();
       break;
