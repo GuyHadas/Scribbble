@@ -4,25 +4,42 @@ var HashHistory = require('react-router').hashHistory;
 
 var DesignStore = require("../stores/designStore.js");
 var ClientActions = require("../actions/clientActions.js");
+var UserStore = require("../stores/userStore.js");
 
 var DesignShow = React.createClass({
   getInitialState: function() {
     var design = DesignStore.find(this.props.params.designId);
-    return {design: design ? design : {}};
+    return { design: design ? design : {}, currentUser: UserStore.currentUser() };
   },
 
   componentDidMount: function() {
-    this.designStoreListener = DesignStore.addListener(this.__onChange);
+    this.designStoreListener = DesignStore.addListener(this.__onDesignChange);
+    this.userStoreListener = UserStore.addListener(this.__onUserChange);
     ClientActions.getDesign(this.props.params.designId);
+
+    if (!this.state.currentUser) {
+      HashHistory.push("/");
+    }
   },
 
   componentWillUnmount: function() {
     this.postStoreListener.remove();
+    this.userStoreListener.remove();
   },
 
-  __onChange: function() {
+  __onDesignChange: function() {
     var design = DesignStore.find(this.props.params.designId);
     this.setState({design: design ? design : {}});
+  },
+
+  __onUserChange: function() {
+    this.setState({ currentUser: UserStore.currentUser() });
+  },
+
+  componentDidUpdate: function() {
+    if (!this.state.currentUser) {
+      HashHistory.push("/");
+    }
   },
 
   render: function() {

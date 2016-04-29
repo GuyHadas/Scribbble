@@ -11,7 +11,7 @@ var UserStore = require("../stores/userStore.js");
 var DesignCard = require("./designCard.jsx");
 var DesignShow = require("./designShow.jsx");
 
-var DesignFormModalStyle = require("../misc/DesignFormModalStyle.js");
+var DesignFormModalStyle = require("../misc/design_form_modal_style.js");
 
 
 var DesignIndex = React.createClass({
