@@ -42,15 +42,18 @@
 .design-show {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(253, 219, 154);
+  height: 100vh;
 }
 
 .design-details-card {
   display: flex;
   flex-direction: column;
+  background-color: white;
   width: 320px;
   height: 500px;
-  margin-top:25px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-radius: 3px;
@@ -92,14 +95,29 @@
 
 .design-url-show {
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-  margin-top: 25px;
+  width: 650px;
+  height: 500px;
+  margin-left: 10%;
+  border-radius: 3px;
+}
+
+.design-url-show img {
   width: 650px;
   height: 400px;
   border-radius: 3px;
 }
 
-.design-url-show img {
-  width: 100%;
+.comment-form-box {
+  display: flex;
+  flex-direction: column;
+  width: 650px;
+  height: 100px;
+  background-color: white;
+  transform: translateY(-3px);
+}
+
+.comment-form {
+  padding: 25px;
+  width: 600px;
   height: 100%;
-  border-radius: 3px;
 }
