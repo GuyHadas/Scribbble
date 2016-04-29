@@ -5,6 +5,7 @@ var HashHistory = require('react-router').hashHistory;
 var DesignStore = require("../stores/designStore.js");
 var ClientActions = require("../actions/clientActions.js");
 var UserStore = require("../stores/userStore.js");
+var DesignStore = require("../stores/designStore.js");
 
 var DesignShow = React.createClass({
   getInitialState: function() {
@@ -16,6 +17,7 @@ var DesignShow = React.createClass({
     this.designStoreListener = DesignStore.addListener(this.__onDesignChange);
     this.userStoreListener = UserStore.addListener(this.__onUserChange);
     ClientActions.getDesign(this.props.params.designId);
+    ClientActions.fetchDesigns();
 
     if (!this.state.currentUser) {
       HashHistory.push("/");
@@ -29,7 +31,10 @@ var DesignShow = React.createClass({
 
   __onDesignChange: function() {
     var design = DesignStore.find(this.props.params.designId);
-    this.setState({design: design ? design : {}});
+    this.setState({ design: design ? design : {} });
+    var designs = DesignStore.all();
+    this.firstDesignId = parseInt(designs[0].id);
+    this.lastDesignId = parseInt(designs[designs.length - 1].id);
   },
 
   __onUserChange: function() {
@@ -47,11 +52,23 @@ var DesignShow = React.createClass({
   },
 
   leftDesignHandler: function() {
-    HashHistory.push("/designs/" + (parseInt(this.props.params.designId) - 1).toString());
+    var prevDesignId = parseInt(this.props.params.designId) - 1;
+
+    if (prevDesignId < this.firstDesignId) {
+      prevDesignId = this.lastDesignId;
+    }
+
+    HashHistory.push("/designs/" + prevDesignId.toString());
   },
 
   rightDesignHandler: function() {
-    HashHistory.push("/designs/" + (parseInt(this.props.params.designId) + 1).toString());
+    var nextDesignId = parseInt(this.props.params.designId) + 1;
+
+    if (nextDesignId > this.lastDesignId) {
+      nextDesignId = this.firstDesignId;
+    }
+
+    HashHistory.push("/designs/" + nextDesignId.toString());
   },
 
 
