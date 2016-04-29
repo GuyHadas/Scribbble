@@ -11,7 +11,7 @@ var UserStore = require("../stores/userStore.js");
 var DesignCard = require("./designCard.jsx");
 var DesignShow = require("./designShow.jsx");
 
-var DesignShowModalStyle = require("../misc/DesignShowModalStyle.js");
+var DesignFormModalStyle = require("../misc/DesignFormModalStyle.js");
 
 
 var DesignIndex = React.createClass({
@@ -30,7 +30,7 @@ var DesignIndex = React.createClass({
     }
 
     if (this.props.params.designId) {
-      this.openModal();
+      HashHistory.push("/designs/" + this.props.params.designId);
     }
   },
 
@@ -55,7 +55,7 @@ var DesignIndex = React.createClass({
 
   componentWillReceiveProps: function() {
     if (this.props.params.designId) {
-      this.openModal();
+      HashHistory.push("/designs/" + this.props.params.designId);
     }
   },
 
@@ -74,16 +74,16 @@ var DesignIndex = React.createClass({
               />;
     });
 
-    var modalContent = <DesignShow designId={this.props.params.designId} />;
-
+    // var modalContent = <DesignForm />;
+      var modalContent;
     return (
       <ul className="design-index-list">
         {designIndexList}
         <Modal isOpen={this.state.modalOpen}
                 onRequestClose={this.closeModal}
-                style={DesignShowModalStyle}
+                style={DesignFormModalStyle}
                 >
-          <div className="modalDisplayShow">
+          <div className="modalDisplayForm">
             {modalContent}
           </div>
         </Modal>

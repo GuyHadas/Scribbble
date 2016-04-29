@@ -1,4 +1,4 @@
-var SessionModalStyle = {
+var DesignFormModalStyle = {
   overlay : {
     backgroundColor : 'rgba(30,30,30,0.85)',
     zIndex          : 10,
@@ -21,7 +21,7 @@ var SessionModalStyle = {
   }
 };
 
-module.exports = SessionModalStyle;
+module.exports = DesignFormModalStyle;
 
 // opacity         : '0',
 // transition      : 'opacity 1.5s',

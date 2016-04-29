@@ -30,10 +30,8 @@ var Scribbble = React.createClass({
 var routes = (
   <Route path="/" component={Scribbble}>
     <IndexRoute component={Home}/>
-    <Route path="designs" component={DesignIndex}>
-      <Route path=":designId" component={DesignShow}>
-      </Route>
-    </Route>
+    <Route path="designs" component={DesignIndex} />
+    <Route path="designs/:designId" component={DesignShow} />
   </Route>
 );
 
