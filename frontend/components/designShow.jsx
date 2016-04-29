@@ -42,9 +42,24 @@ var DesignShow = React.createClass({
     }
   },
 
+  componentWillReceiveProps: function() {
+    ClientActions.getDesign(this.props.params.designId);
+  },
+
+  leftDesignHandler: function() {
+    HashHistory.push("/designs/" + (parseInt(this.props.params.designId) - 1).toString());
+  },
+
+  rightDesignHandler: function() {
+    HashHistory.push("/designs/" + (parseInt(this.props.params.designId) + 1).toString());
+  },
+
+
   render: function() {
     return (
       <div className="design-show">
+
+        <div className="left-design" onClick={this.leftDesignHandler}/>
 
         <div className="design-details-card">
           <div className="details-box">
@@ -83,6 +98,8 @@ var DesignShow = React.createClass({
             <span className="comment-form">Comment form goes here...</span>
           </div>
         </div>
+
+        <div className="right-design" onClick={this.rightDesignHandler} />
 
       </div>
     );

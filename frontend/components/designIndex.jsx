@@ -68,6 +68,7 @@ var DesignIndex = React.createClass({
     this.setState({ modalOpen: false});
   },
 
+
   render: function() {
     var designIndexList = this.state.designs.map(function(design) {
       return <DesignCard key={design.id}
