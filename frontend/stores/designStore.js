@@ -12,6 +12,10 @@ DesignStore.all = function () {
   });
 };
 
+DesignStore.find = function(designId) {
+  return _designs[designId];
+};
+
 var resetDesigns = function(designs) {
   _designs = {};
   for (var i = 0; i < designs.length; i++) {

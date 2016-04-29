@@ -1,3 +1,7 @@
+/*.ReactModal__Body--open {
+  overflow: hidden;
+}*/
+
 .design-index-list {
   display: flex;
   flex-direction: row;
@@ -11,10 +15,10 @@
   margin: 15px;
   width: 400px;
   height: 300px;
-  border: 1px solid #ccc;
+  /*border: 1px solid #ccc;*/
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-  transition: box-shadow .2s;
   transition: transform .5s;
+  border-radius: 4px;
 }
 
 .design-card:hover {
@@ -22,12 +26,45 @@
   transform: translateY(-5px);
 }
 
-
-.design-card img {
-  width: 400px;
-  height: 300px;
+.modalDisplayShow {
+  height: 100%;
+  width: 100%;
 }
 
+.design-url-index-item img {
+  width: 400px;
+  height: 300px;
+  border-radius: 4px;
+}
 
-/*small 400x300
-big 800x600*/
+.design-show {
+  display: flex;
+  flex-direction: column;
+}
+
+.design-show-top {
+  display: flex;
+  flex-direction: row;
+  height: 450px;
+}
+
+.design-details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 35%;
+  overflow: auto;
+}
+
+.design-url-show {
+  box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
+  width: 600px;
+  height: 450px;
+  border-radius:5px;
+}
+
+.design-url-show img {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+}

@@ -10,6 +10,7 @@ var HashHistory = require('react-router').hashHistory;
 var Home = require("./components/home.jsx");
 var Navbar = require("./components/navbar.jsx");
 var DesignIndex = require("./components/designIndex.jsx");
+var DesignShow = require("./components/designShow.jsx");
 
 
 var Modal = require("react-modal");
@@ -30,6 +31,8 @@ var routes = (
   <Route path="/" component={Scribbble}>
     <IndexRoute component={Home}/>
     <Route path="designs" component={DesignIndex}>
+      <Route path=":designId" component={DesignShow}>
+      </Route>
     </Route>
   </Route>
 );

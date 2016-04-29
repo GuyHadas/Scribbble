@@ -8,7 +8,7 @@ var DesignCard = React.createClass({
   render: function() {
     return (
       <li className="design-card">
-        <div className="design-url"><img  src={this.props.design.design_url}/></div>
+        <div className="design-url-index-item"><img  src={this.props.design.design_url}/></div>
       </li>
     );
   }
