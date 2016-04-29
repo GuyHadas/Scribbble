@@ -23,7 +23,7 @@ var DesignShow = React.createClass({
   },
 
   componentWillUnmount: function() {
-    this.postStoreListener.remove();
+    this.designStoreListener.remove();
     this.userStoreListener.remove();
   },
 

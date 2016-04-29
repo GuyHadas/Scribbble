@@ -48,6 +48,7 @@ var DesignIndex = React.createClass({
   },
 
   componentDidUpdate: function() {
+    console.log("beign updated");
     if (!this.state.currentUser) {
       HashHistory.push("/");
     }
