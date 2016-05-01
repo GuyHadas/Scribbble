@@ -17,11 +17,13 @@ var Login = React.createClass({
   },
 
   componentDidMount: function() {
+    ClientActions.clearErrors();
     var self = this;
     setTimeout(function() {
       ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
       500);
   },
+
 
   usernameChange: function(e) {
     e.preventDefault();
