@@ -32,9 +32,7 @@ var DesignShow = React.createClass({
   __onDesignChange: function() {
     var design = DesignStore.find(this.props.params.designId);
     this.setState({ design: design ? design : {} });
-    var designs = DesignStore.all();
-    this.firstDesignId = parseInt(designs[0].id);
-    this.lastDesignId = parseInt(designs[designs.length - 1].id);
+    this.designs = DesignStore.all();
   },
 
   __onUserChange: function() {
@@ -49,26 +47,30 @@ var DesignShow = React.createClass({
 
   componentWillReceiveProps: function() {
     ClientActions.getDesign(this.props.params.designId);
+    ClientActions.fetchDesigns();
   },
 
   leftDesignHandler: function() {
-    var prevDesignId = parseInt(this.props.params.designId) - 1;
-
-    if (prevDesignId < this.firstDesignId) {
-      prevDesignId = this.lastDesignId;
+    var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
+    if (prevDesignIdx < 0) {
+      var prevDesignId = this.designs[this.designs.length - 1].id.toString();
+    } else {
+      prevDesignId = this.designs[prevDesignIdx].id.toString();
     }
 
-    HashHistory.push("/designs/" + prevDesignId.toString());
+    HashHistory.push("/designs/" + prevDesignId);
   },
 
   rightDesignHandler: function() {
-    var nextDesignId = parseInt(this.props.params.designId) + 1;
+    var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
 
-    if (nextDesignId > this.lastDesignId) {
-      nextDesignId = this.firstDesignId;
+    if (nextDesignIdx === this.designs.length) {
+      var nextDesignId = this.designs[0].id;
+    } else {
+      nextDesignId = this.designs[nextDesignIdx].id.toString();
     }
 
-    HashHistory.push("/designs/" + nextDesignId.toString());
+    HashHistory.push("/designs/" + nextDesignId);
   },
 
   randomBackgroundColor: function() {
@@ -86,6 +88,10 @@ var DesignShow = React.createClass({
     return colorOptions[randomPos];
   },
 
+  backToIndex: function() {
+    HashHistory.push("/designs");
+  },
+
   render: function() {
     return (
       <div className="design-show"
@@ -95,48 +101,57 @@ var DesignShow = React.createClass({
           }
         }>
 
-        <div className="left-design" onClick={this.leftDesignHandler}/>
+        <div className="design-show-back">
+          <div className="back-to-index-btn" onClick={this.backToIndex}>Designs</div>
+        </div>
 
-        <div className="design-details-card">
-          <div className="details-box">
-            <div className="details-title-username-info">
-              <div className="design-title">{this.state.design.title}</div>
-              <div>by <span className="design-username">
-                {this.state.design.username}
-                </span>
+        <div className="main-design-show">
+          <div className="left-design" onClick={this.leftDesignHandler}>
+            <img className="left-arrow" src="leftarrow.png"/>
+          </div>
+
+          <div className="design-details-card">
+            <div className="details-box">
+              <div className="details-title-username-info">
+                <div className="design-title">{this.state.design.title}</div>
+                <div>by <span className="design-username">
+                  {this.state.design.username}
+                  </span>
+                </div>
               </div>
+              <div className="design-desc">{this.state.design.description}</div>
             </div>
-            <div className="design-desc">{this.state.design.description}</div>
+            <ul className="comments-list">
+              <li className="comment">Wow what a dope picture dude such awesome work!</li>
+              <li className="comment">I think the purple doesn't really work right here.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">I am not really sure what you were going for I think it is nice but can be a lot better. The lighting is all off and the colors don't work with one another.</li>
+              <li className="comment">This is soooooo ugly ewww.</li>
+              <li className="comment">Yeah wow nice for sure.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+              <li className="comment">This project is really cool, but still unfinished.</li>
+            </ul>
           </div>
-          <ul className="comments-list">
-            <li className="comment">Wow what a dope picture dude such awesome work!</li>
-            <li className="comment">I think the purple doesn't really work right here.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">I am not really sure what you were going for I think it is nice but can be a lot better. The lighting is all off and the colors don't work with one another.</li>
-            <li className="comment">This is soooooo ugly ewww.</li>
-            <li className="comment">Yeah wow nice for sure.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-            <li className="comment">This project is really cool, but still unfinished.</li>
-          </ul>
-        </div>
 
-        <div className="design-url-show">
-          <img src={this.state.design.design_url} />
-          <div className="comment-form-box">
-            <span className="comment-form">Comment form goes here...</span>
+          <div className="design-url-show">
+            <img src={this.state.design.design_url} />
+            <div className="comment-form-box">
+              <span className="comment-form">Comment form goes here...</span>
+            </div>
+          </div>
+
+          <div className="right-design" onClick={this.rightDesignHandler}>
+            <img className="right-arrow" src="rightArrow.png"/>
           </div>
         </div>
-
-        <div className="right-design" onClick={this.rightDesignHandler} />
-
       </div>
     );
   }

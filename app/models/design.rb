@@ -14,5 +14,6 @@
 class Design < ActiveRecord::Base
   validates :title, :description, :design_url, :user_id, presence: true
 
+
   belongs_to :user
 end

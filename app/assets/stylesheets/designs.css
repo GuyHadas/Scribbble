@@ -40,20 +40,30 @@
 
 .design-show {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.main-design-show {
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  flex-wrap: wrap;
 }
 
-
-
+.design-show-back {
+  align-self: flex-start;
+}
 
 .design-details-card {
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 320px;
+  min-width: 320px;
+  max-width: 320px;
   height: 500px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
@@ -63,6 +73,8 @@
   overflow: auto;
   padding-left: 40px;
   padding-right: 40px;
+  margin-right: 50px;
+  margin-left: 25px;
 }
 
 .details-title-username-info {
@@ -99,7 +111,8 @@
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
   width: 650px;
   height: 500px;
-  margin-left: 10%;
+  margin-left: 50px;
+  margin-right: 25px;
   border-radius: 3px;
 }
 
@@ -124,16 +137,40 @@
   height: 100%;
 }
 
+.back-to-index-btn {
+  height: 50px;
+  border-radius: 5px;
+  background-color : #f57171;
+  opacity: .6;
+  padding: 0px 25px;
+  color: white;
+  box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
+  margin-left: 75px;
+  transition: transform .5s;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-index-btn:hover {
+  box-shadow: 0px 15px 35px 0px rgba(0,0,0,0.75);
+  transform: translateY(-5px);
+}
+
 .left-design {
-  width: 100px;
+  min-width: 100px;
   height: 100px;
   background-color : #f57171;
   opacity: .6;
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-  margin-right: auto;
-  margin-left: 100px;
-  border-radius: 50%;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 50px;
   transition: transform .5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .left-design:hover {
@@ -141,19 +178,35 @@
   transform: translateY(-5px);
 }
 
+.left-arrow {
+  width: 70px;
+  height: 70px;
+  padding-right: 10px;
+}
+
 .right-design {
-  width: 100px;
+  min-width: 100px;
   height: 100px;
   background-color : #f57171;
   opacity: .6;
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-  margin-left: auto;
   margin-right: 100px;
-  border-radius: 50%;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 50px;
   transition: transform .5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .right-design:hover {
   box-shadow: 0px 15px 35px 0px rgba(0,0,0,0.75);
   transform: translateY(-5px);
+}
+
+.right-arrow {
+  width: 70px;
+  height: 70px;
+  padding-left: 10px;
 }

@@ -10,6 +10,7 @@ var UserStore = require("../stores/userStore.js");
 
 var DesignCard = require("./designCard.jsx");
 var DesignShow = require("./designShow.jsx");
+var DesignForm = require("./designForm.jsx");
 
 var DesignFormModalStyle = require("../misc/design_form_modal_style.js");
 
@@ -48,7 +49,6 @@ var DesignIndex = React.createClass({
   },
 
   componentDidUpdate: function() {
-    console.log("beign updated");
     if (!this.state.currentUser) {
       HashHistory.push("/");
     }
@@ -89,7 +89,10 @@ var DesignIndex = React.createClass({
             {modalContent}
           </div>
         </Modal>
+
+        <DesignForm />
       </ul>
+
     );
   }
 });

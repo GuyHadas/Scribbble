@@ -56,6 +56,10 @@ var Navbar = React.createClass({
     this.setState({ errors: ErrorStore.all() });
   },
 
+  logoClickHandler: function() {
+    HashHistory.push("/designs");
+  },
+
   render: function() {
     var modalForm = this.state.signIn ? <LogIn /> : <SignUp />;
 
@@ -82,7 +86,9 @@ var Navbar = React.createClass({
     return (
       <nav>
         <div className="nav-elements">
-          <img src="scribbble-logo.png" id="nav-logo"/>
+          <img src="scribbble-logo.png"
+            id="nav-logo"
+            onClick={this.logoClickHandler}/>
           {sessionButtons}
           <Modal isOpen={this.state.modalOpen}
                   onRequestClose={this.closeModal}

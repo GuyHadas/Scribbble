@@ -101,8 +101,8 @@ var ApiUtil = {
       data: {design: { title: design.title,
                        description: design.description,
                        design_url: design.design_url }},
-     success: function(updatedDesign) {
-       DesignActions.receiveDesign(updatedDesign);
+     success: function(createdDesign) {
+       DesignActions.receiveDesign(createdDesign);
      }
     });
   },
