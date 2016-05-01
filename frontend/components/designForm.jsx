@@ -9,7 +9,7 @@ var UploadImage = require("./uploadImage.jsx");
 
 var DesignForm = React.createClass({
   getInitialState: function() {
-    return { title: "", description: "", images: []};
+    return { title: "", description: "", design_url: ""};
   },
 
   componentDidMount: function() {
@@ -43,7 +43,17 @@ var DesignForm = React.createClass({
   },
 
   render: function() {
+    if (this.state.design_url) {
+      var imageArea = <img
+        src={this.state.design_url}
+        style={{
+          width: "200px",
+          height: "150px",
+          marginBottom: "25px" }}/>;
+    } else {
+      var imageArea = <UploadImage imageUrlUpload={this.imageUrlUpload} />;
 
+    }
     return (
       <form className="design-form" onSubmit={this.submitHandler}>
         <input
@@ -60,7 +70,7 @@ var DesignForm = React.createClass({
           onChange={this.descriptionChange}
           placeholder="Description"></textarea>
 
-        <UploadImage imageUrlUpload={this.imageUrlUpload} />
+        {imageArea}
 
         <input type="submit" className="modal-submit-btn" value="New Design"/>
 

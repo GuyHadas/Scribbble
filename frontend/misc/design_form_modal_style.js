@@ -11,7 +11,7 @@ var DesignFormModalStyle = {
     left            : '40%',
     right           : '40%',
     width           : "360px",
-    height          : "260px",
+    height          : "360px",
     display         : 'flex',
     flexDirection   : 'column',
     justifyContent  : 'center',
