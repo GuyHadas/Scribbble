@@ -11,7 +11,11 @@ var LogIn = require("./login.jsx");
 var SignUp = require("./signup.jsx");
 var LogOut = require("./logout.jsx");
 var Errors = require("./errors.jsx");
+var DesignForm = require("./designForm.jsx");
+
 var SessionModalStyle = require("../misc/sessionModalStyle.js");
+var DesignFormModalStyle = require("../misc/design_form_modal_style.js");
+
 
 var Navbar = React.createClass({
 
@@ -68,7 +72,11 @@ var Navbar = React.createClass({
     }
 
     if (this.state.currentUser) {
-      var sessionButtons = <div className="session-buttons"><LogOut/></div>;
+      var sessionButtons =
+      <div className="session-buttons">
+        <span className="nav-session-button">New Design</span>
+        <div className="session-buttons"><LogOut/></div>
+      </div>;
     } else {
       sessionButtons =
       <div className="session-buttons">
