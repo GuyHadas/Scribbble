@@ -102,7 +102,7 @@ var DesignShow = React.createClass({
         }>
 
         <div className="design-show-back">
-          <div className="back-to-index-btn" onClick={this.backToIndex}>Designs</div>
+          <div className="back-to-index-btn" onClick={this.backToIndex}>Back</div>
         </div>
 
         <div className="main-design-show">
