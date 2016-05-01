@@ -21,6 +21,13 @@ var DesignActions = {
       actionType: DesignConstants.DESIGNS_RECEIVED,
       designs: designs
     });
+  },
+
+  receiveErrors: function(errors) {
+    dispatcher.dispatch({
+      actionType: DesignConstants.ERRORS_RECEIVED,
+      errors: errors
+    });
   }
 };
 

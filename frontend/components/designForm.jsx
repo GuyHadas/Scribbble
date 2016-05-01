@@ -4,19 +4,25 @@ var HashHistory = require('react-router').hashHistory;
 
 var ClientActions = require("../actions/clientActions.js");
 
+
 var UploadImage = require("./uploadImage.jsx");
 
 
 var DesignForm = React.createClass({
   getInitialState: function() {
-    return { title: "", description: "", design_url: ""};
+    return { title: "", description: "", design_url: "" };
   },
 
   componentDidMount: function() {
     var self = this;
+
     setTimeout(function() {
       ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
       500);
+  },
+
+  componentWillUnmount: function() {
+    ClientActions.clearErrors();
   },
 
   titleChange: function(e) {
@@ -31,6 +37,7 @@ var DesignForm = React.createClass({
 
   submitHandler: function(e) {
     e.preventDefault();
+    ClientActions.clearErrors();
     ClientActions.createDesign({
       title: this.state.title,
       description: this.state.description,
@@ -52,8 +59,8 @@ var DesignForm = React.createClass({
           marginBottom: "25px" }}/>;
     } else {
       var imageArea = <UploadImage imageUrlUpload={this.imageUrlUpload} />;
-
     }
+
     return (
       <form className="design-form" onSubmit={this.submitHandler}>
         <input

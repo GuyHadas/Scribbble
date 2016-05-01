@@ -76,7 +76,6 @@ var DesignShow = React.createClass({
   randomBackgroundColor: function() {
     var colorOptions = [
       "rgba(154, 203, 253, 0.6)", //baby-blue
-      "rgba(247, 123, 16, 0.4)", //organge-yellow
       "rgba(166, 215, 183, 0.7)", //aquagreen
       "rgba(61, 44, 83, 0.5)", //purple
       "rgba(251, 240, 153, 0.5)", //yellow

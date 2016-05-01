@@ -103,6 +103,9 @@ var ApiUtil = {
                        design_url: design.design_url }},
      success: function(createdDesign) {
        DesignActions.receiveDesign(createdDesign);
+     },
+     error: function(errors) {
+       DesignActions.receiveErrors(errors);
      }
     });
   },

@@ -8,6 +8,7 @@
   justify-content: center;
   margin-left: 50px;
   margin-right: 50px;
+  margin-top: 10px;
   flex-wrap: wrap;
 }
 
@@ -51,6 +52,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 50px;
 }
 
 .design-show-back {
@@ -135,6 +137,10 @@
   padding: 25px;
   width: 600px;
   height: 100%;
+}
+
+.design-show-back {
+  margin-bottom: 50px;
 }
 
 .back-to-index-btn {

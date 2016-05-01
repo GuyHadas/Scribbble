@@ -13,7 +13,7 @@ ErrorStore.all = function () {
 
 var resetErrors = function(errors) {
   if (errors) {
-    _errors = errors.responseJSON.errors;    
+    _errors = errors.responseJSON.errors;
   }
 };
 
