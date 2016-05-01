@@ -8,6 +8,7 @@
   margin-bottom: 25px;
   background-color: transparent;
   width: 100%;
+  transition: border 1s;
 }
 
 .form-textbox:-webkit-autofill {
@@ -28,6 +29,7 @@
   border-bottom: 2px solid #ccc;
   margin-bottom: 25px;
   outline: none;
+  transition: border 1s;
 }
 
 .form-textarea:-webkit-autofill {
@@ -46,6 +48,11 @@
   height: 50px;
   border: 2px dashed #ccc;
   margin-bottom: 25px;
+  transition: border .5s;
+}
+
+.form-image-drop:hover {
+  border: 2px dashed #26a69a;
 }
 
 
@@ -57,14 +64,14 @@
 }
 
 .modal-submit-btn {
-  background-color:  #26a69a;
+  background-color: #26a69a;
   opacity: .8;
   height: 36px;
   border: none;
   border-radius: 2px;
   width: 120px;
   box-shadow: 0px 2px 6px 0px rgba(0,0,0,0.75);
-  transition: transform .5s;
+  transition: all 1s;
   cursor: pointer;
   font-size: 15px;
   letter-spacing: .5px;
@@ -74,6 +81,7 @@
 
 .modal-submit-btn:hover {
   box-shadow: 0px 4px 10px 0px rgba(0,0,0,0.75);
+  background-color: #2BBBAD;
   transform: translateY(-1px);
 }
 
