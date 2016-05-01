@@ -74,31 +74,3 @@ nav {
 .nav-session-button:hover {
  background-color: rgba(97,96,96,0.2);
 }
-
-.modal {
-  width: 100%;
-}
-
-.formTextbox {
-  border: none;
-  border-bottom: 2px solid #ccc;
-  margin-bottom: 25px;
-  background-color: transparent;
-}
-
-.formTextbox:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px rgb(244, 244, 244) inset !important;
-}
-
-
-.formTextbox:focus {
-  outline: none;
-  border-bottom: 2px solid #26a69a;
-}
-
-
-.modal-form {
- display: flex;
- flex-direction: column;
- width: 100%
-}

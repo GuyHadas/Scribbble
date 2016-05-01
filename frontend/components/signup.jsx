@@ -38,17 +38,17 @@ var SignUp = React.createClass({
       <form className="modal-form" onSubmit={this.submitHandler} >
         <input type="text"
           ref="autoFocus"
-          className="formTextbox"
+          className="form-textbox"
           value={this.state.username}
           onChange={this.usernameChange}
           placeholder="Username"/>
 
         <input type="password"
-          className="formTextbox"
+          className="form-textbox"
           value={this.state.password}
           onChange={this.passwordChange}
           placeholder="Password"/>
-        <input type="submit" value="Sign Up"/>
+        <input type="submit" className="modal-submit-btn" value="Sign Up"/>
       </form>
     );
   }

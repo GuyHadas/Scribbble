@@ -19,7 +19,7 @@ var UploadImage = React.createClass({
 
   render: function() {
     return (
-      <button onClick={this.upload}>Upload Image</button>
+      <div className="form-image-drop" onClick={this.upload}>Upload Your Design</div>
     );
   }
 });

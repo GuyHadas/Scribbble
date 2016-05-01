@@ -13,7 +13,7 @@ var Errors = React.createClass({
     });
 
     return (
-      <ul>
+      <ul className="form-errors">
         {errorsList}
       </ul>
     );

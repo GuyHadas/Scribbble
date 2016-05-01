@@ -48,21 +48,21 @@ var DesignForm = React.createClass({
       <form className="design-form" onSubmit={this.submitHandler}>
         <input
           type="text"
-          className="formTextbox"
+          className="form-textbox"
           ref="autoFocus"
           value={this.state.title}
           onChange={this.titleChange}
           placeholder="Title"
           />
 
-        <textarea className="formTextarea"
+        <textarea className="form-textarea"
           value={this.state.description}
           onChange={this.descriptionChange}
           placeholder="Description"></textarea>
 
-        <UploadImage imageUrlUpload={this.imageUrlUpload} />;
+        <UploadImage imageUrlUpload={this.imageUrlUpload} />
 
-        <input type="submit" value="New Design"/>
+        <input type="submit" className="modal-submit-btn" value="New Design"/>
 
       </form>
     );

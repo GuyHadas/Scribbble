@@ -38,7 +38,7 @@ var Login = React.createClass({
       <form className="modal-form" onSubmit={this.submitHandler}>
         <input
           type="text"
-          className="formTextbox"
+          className="form-textbox"
           ref="autoFocus"
           value={this.state.username}
           onChange={this.usernameChange}
@@ -46,12 +46,12 @@ var Login = React.createClass({
           />
 
         <input type="password"
-          className="formTextbox"
+          className="form-textbox"
           value={this.state.password}
           onChange={this.passwordChange}
           placeholder="Password"/>
 
-        <input type="submit" value="Login"/>
+        <input type="submit" className="modal-submit-btn" value="Login"/>
       </form>
     );
   }
