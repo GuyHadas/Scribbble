@@ -80,7 +80,7 @@
   overflow: auto;
   padding-left: 40px;
   padding-right: 40px;
-  margin-top: 50px;
+  margin-top: 125px;
   margin-bottom: 25px;
 }
 
@@ -141,8 +141,6 @@
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
   width: 650px;
   height: 500px;
-  margin-left: 50px;
-  margin-right: 25px;
   margin-top: 25px;
   border-radius: 3px;
 }
@@ -166,6 +164,15 @@
   cursor: pointer;
 }
 
+@media screen and (min-width: 1400px) {
+  .design-url-show img {
+    width: 650px;
+    height: 400px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}
+
 .comment-form-box {
   display: flex;
   flex-direction: column;
@@ -175,10 +182,29 @@
   transform: translateY(-3px);
 }
 
+@media screen and (min-width: 1400px) {
+  .comment-form-box {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    height: 100px;
+    background-color: white;
+    transform: translateY(-3px);
+  }
+}
+
 .comment-form {
   padding: 25px;
   width: 600px;
   height: 100%;
+}
+
+@media screen and (min-width: 1400px) {
+  .comment-form {
+    padding: 25px;
+    width: 600px;
+    height: 100%;
+  }
 }
 
 .design-show-back {
