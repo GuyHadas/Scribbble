@@ -120,7 +120,7 @@ var ApiUtil = {
         body: comment.body,
         x_pos: comment.xPos,
         y_pos: comment.yPos,
-        design_id: comment.design_id
+        design_id: comment.designId
       }},
       success: function(design) {
         DesignActions.receiveDesign(design);

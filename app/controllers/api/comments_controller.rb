@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = 8
+    @comment.user_id = current_user.id
     if @comment.save
       @design = Design.includes(comments: :user).find(comment_params[:design_id])
       render 'api/designs/show'

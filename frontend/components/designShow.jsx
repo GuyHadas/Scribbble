@@ -5,7 +5,7 @@ var HashHistory = require('react-router').hashHistory;
 var DesignStore = require("../stores/designStore.js");
 var ClientActions = require("../actions/clientActions.js");
 var UserStore = require("../stores/userStore.js");
-window.DesignStore = require("../stores/designStore.js");
+var DesignStore = require("../stores/designStore.js");
 
 var Comment = require("./comment.jsx");
 var CommentForm = require("./commentForm.jsx");
@@ -17,7 +17,7 @@ var DesignShow = React.createClass({
       design: design ? design : {},
       currentUser: UserStore.currentUser(),
       commentPos: [],
-      commentFormOpen: false
+      commentFormOpen: false,
     };
   },
 
@@ -113,7 +113,10 @@ var DesignShow = React.createClass({
     this.setState({ commentPos: []});
   },
 
-  openCommentForm: function() {
+  openCommentForm: function(e) {
+    this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
+    this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
+
     this.setState({ commentFormOpen: true });
   },
 
@@ -134,6 +137,7 @@ var DesignShow = React.createClass({
         var designImgShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
       }
       var designImage = <img
+        id="design-img"
         src={this.state.design.design_url}
         onClick={this.openCommentForm}
         style={{boxShadow: designImgShadow}}
@@ -150,7 +154,11 @@ var DesignShow = React.createClass({
     }
 
     if (this.state.commentFormOpen) {
-      var commentForm = <CommentForm closeCommentForm={this.closeCommentForm}/>;
+      var commentForm = <CommentForm
+        closeCommentForm={this.closeCommentForm}
+        xPos={this.xPos}
+        yPos={this.yPos}
+        designId={this.state.design.id}/>;
       var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
       var designUrlMarginBottom = "25px";
     }

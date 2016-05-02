@@ -1,6 +1,7 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var HashHistory = require('react-router').hashHistory;
+var ClientActions = require('../actions/clientActions.js');
 
 var CommentForm = React.createClass({
 
@@ -20,8 +21,14 @@ var CommentForm = React.createClass({
     this.setState({ body: e.target.value });
   },
 
-  submitHandler: function() {
-    console.log(this.state);
+  submitHandler: function(e) {
+    e.preventDefault();
+    ClientActions.createComment({
+      body: this.state.body,
+      xPos: this.props.xPos,
+      yPos: this.props.yPos,
+      designId: this.props.designId
+    });
   },
 
   render: function() {
