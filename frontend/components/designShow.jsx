@@ -8,6 +8,7 @@ var UserStore = require("../stores/userStore.js");
 window.DesignStore = require("../stores/designStore.js");
 
 var Comment = require("./comment.jsx");
+var CommentForm = require("./commentForm.jsx");
 
 var DesignShow = React.createClass({
   getInitialState: function() {
@@ -16,6 +17,7 @@ var DesignShow = React.createClass({
       design: design ? design : {},
       currentUser: UserStore.currentUser(),
       commentPos: [],
+      commentFormOpen: false
     };
   },
 
@@ -56,6 +58,9 @@ var DesignShow = React.createClass({
   componentWillReceiveProps: function() {
     ClientActions.fetchDesigns();
     ClientActions.getDesign(this.props.params.designId);
+    if (this.state.commentFormOpen) {
+      this.setState({ commentFormOpen: false });
+    }
     this.backgroundColor = this.randomBackgroundColor();
   },
 
@@ -101,12 +106,19 @@ var DesignShow = React.createClass({
   },
 
   showComment: function(coords) {
-    console.log(coords);
     this.setState({ commentPos: coords });
   },
 
   unshowComment: function() {
     this.setState({ commentPos: []});
+  },
+
+  openCommentForm: function() {
+    this.setState({ commentFormOpen: true });
+  },
+
+  closeCommentForm: function() {
+    this.setState({ commentFormOpen: false});
   },
 
   render: function() {
@@ -118,20 +130,29 @@ var DesignShow = React.createClass({
     }
 
     if (this.state.design.design_url) {
-      var designImage = <img src={this.state.design.design_url} />;
+      if (!this.state.commentFormOpen) {
+        var designImgShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+      }
+      var designImage = <img
+        src={this.state.design.design_url}
+        onClick={this.openCommentForm}
+        style={{boxShadow: designImgShadow}}
+      />;
     }
 
     if (this.state.commentPos.length > 0) {
-      var commentShow = <div class="comment-show" style={{
-          width: "10px",
-          height: "10px",
-          backgroundColor: "yellow",
-          position: "absolute",
+      var commentShow = <div className="comment-show" style={{
+
           left: this.state.commentPos[0],
           top: this.state.commentPos[1],
-          borderRadius: "5px",
-          border: "1px solid #ccc"
+
         } }></div>;
+    }
+
+    if (this.state.commentFormOpen) {
+      var commentForm = <CommentForm closeCommentForm={this.closeCommentForm}/>;
+      var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+      var designUrlMarginBottom = "25px";
     }
 
     return (
@@ -167,12 +188,10 @@ var DesignShow = React.createClass({
             </ul>
           </div>
 
-          <div className="design-url-show">
+          <div className="design-url-show" style={ { boxShadow: designUrlShadow, marginBottom: designUrlMarginBottom }}>
             {commentShow}
             {designImage}
-            <div className="comment-form-box">
-              <span className="comment-form">Comment form goes here...</span>
-            </div>
+            {commentForm}
           </div>
 
           <div className="right-design" onClick={this.rightDesignHandler}>
