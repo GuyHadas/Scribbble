@@ -12,7 +12,11 @@ var Comment = require("./comment.jsx");
 var DesignShow = React.createClass({
   getInitialState: function() {
     var design = DesignStore.find(this.props.params.designId);
-    return { design: design ? design : {}, currentUser: UserStore.currentUser(), commentPos: []};
+    return {
+      design: design ? design : {},
+      currentUser: UserStore.currentUser(),
+      commentPos: [],
+    };
   },
 
   componentDidMount: function() {
@@ -20,6 +24,8 @@ var DesignShow = React.createClass({
     this.userStoreListener = UserStore.addListener(this.__onUserChange);
     ClientActions.fetchDesigns();
     ClientActions.getDesign(this.props.params.designId);
+
+    this.backgroundColor = this.randomBackgroundColor();
 
     if (!this.state.currentUser) {
       HashHistory.push("/");
@@ -50,6 +56,7 @@ var DesignShow = React.createClass({
   componentWillReceiveProps: function() {
     ClientActions.fetchDesigns();
     ClientActions.getDesign(this.props.params.designId);
+    this.backgroundColor = this.randomBackgroundColor();
   },
 
   leftDesignHandler: function() {
@@ -93,34 +100,45 @@ var DesignShow = React.createClass({
     HashHistory.push("/designs");
   },
 
-  // showComment: function(coords) {
-  //   this.setState({ commentPos: coords });
-  // },
+  showComment: function(coords) {
+    console.log(coords);
+    this.setState({ commentPos: coords });
+  },
+
+  unshowComment: function() {
+    this.setState({ commentPos: []});
+  },
 
   render: function() {
-    console.log(this.state.design.comments);
-    console.log(this.state);
     if (this.state.design.comments) {
       var self = this;
       var commentsList = this.state.design.comments.map(function(comment) {
-        return <Comment key={comment.id} comment={comment}/>;
+        return <Comment key={comment.id} comment={comment} showComment={self.showComment} unshowComment={self.unshowComment}/>;
       });
-      // console.log(commentsList);
     }
 
     if (this.state.design.design_url) {
       var designImage = <img src={this.state.design.design_url} />;
     }
 
-    if (this.state.commentPos) {
-      var commentShow = <div class="comment-show"></div>;
+    if (this.state.commentPos.length > 0) {
+      var commentShow = <div class="comment-show" style={{
+          width: "10px",
+          height: "10px",
+          backgroundColor: "yellow",
+          position: "absolute",
+          left: this.state.commentPos[0],
+          top: this.state.commentPos[1],
+          borderRadius: "5px",
+          border: "1px solid #ccc"
+        } }></div>;
     }
 
     return (
       <div className="design-show"
         style={
           {
-            backgroundColor: this.randomBackgroundColor()
+            backgroundColor: this.backgroundColor
           }
         }>
 
