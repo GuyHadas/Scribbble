@@ -14,6 +14,6 @@
 class Design < ActiveRecord::Base
   validates :title, :description, :design_url, :user_id, presence: true
 
-
+  has_many :comments
   belongs_to :user
 end

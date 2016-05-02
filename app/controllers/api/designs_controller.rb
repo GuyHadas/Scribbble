@@ -1,7 +1,7 @@
 
 class Api::DesignsController < ApplicationController
   def show
-    @design = Design.find(params[:id])
+    @design = Design.includes(comments: :user).find(params[:id])
     render :show
   end
 

@@ -80,7 +80,7 @@
   overflow: auto;
   padding-left: 40px;
   padding-right: 40px;
-  margin-top: 125px;
+  margin-top: 50px;
   margin-bottom: 25px;
 }
 
@@ -180,6 +180,7 @@
   height: 100px;
   background-color: white;
   transform: translateY(-3px);
+  border-top: 1px solid #ccc;
 }
 
 @media screen and (min-width: 1400px) {
@@ -190,6 +191,7 @@
     height: 100px;
     background-color: white;
     transform: translateY(-3px);
+    border-top: 1px solid #ccc;
   }
 }
 
