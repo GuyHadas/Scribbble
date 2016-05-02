@@ -44,6 +44,14 @@ var clientActions = {
 
   createDesign: function(design) {
     ApiUtil.createDesign(design);
+  },
+
+  createComment: function(comment) {
+    ApiUtil.createComment(comment);
+  },
+
+  deleteComment: function(commentId) {
+    ApiUtil.deleteComment(commentId);
   }
 };
 

@@ -98,9 +98,11 @@ var ApiUtil = {
     $.ajax({
       type: 'POST',
       url: 'api/designs',
-      data: {design: { title: design.title,
-                       description: design.description,
-                       design_url: design.design_url }},
+      data: {design: {
+        title: design.title,
+        description: design.description,
+        design_url: design.design_url
+      }},
      success: function(createdDesign) {
        DesignActions.receiveDesign(createdDesign);
      },
@@ -109,6 +111,35 @@ var ApiUtil = {
      }
     });
   },
+
+  createComment: function(comment) {
+    $.ajax({
+      type: 'POST',
+      url: 'api/comments',
+      data: {comment: {
+        body: comment.body,
+        x_pos: comment.xPos,
+        y_pos: comment.yPos,
+        design_id: comment.design_id
+      }},
+      success: function(design) {
+        DesignActions.receiveDesign(design);
+      },
+      error: function(errors) {
+        DesignActions.receiveErrors(errors);
+      }
+    });
+  },
+
+  deleteComment: function(commentId) {
+    $.ajax({
+      type: 'DELETE',
+      url: 'api/comments' + commentId.toString(),
+      success: function(design) {
+        DesignActions.receiveDesign(design);
+      }
+    });
+  }
 
 };
 

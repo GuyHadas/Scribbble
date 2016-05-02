@@ -6,7 +6,7 @@ class Api::DesignsController < ApplicationController
   end
 
   def index
-    @designs = Design.includes(:user)
+    @designs = Design.includes(:user, comments: :user)
     render :index
   end
 

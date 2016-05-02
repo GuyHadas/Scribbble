@@ -5,19 +5,21 @@ var HashHistory = require('react-router').hashHistory;
 var DesignStore = require("../stores/designStore.js");
 var ClientActions = require("../actions/clientActions.js");
 var UserStore = require("../stores/userStore.js");
-var DesignStore = require("../stores/designStore.js");
+window.DesignStore = require("../stores/designStore.js");
+
+var Comment = require("./comment.jsx");
 
 var DesignShow = React.createClass({
   getInitialState: function() {
     var design = DesignStore.find(this.props.params.designId);
-    return { design: design ? design : {}, currentUser: UserStore.currentUser() };
+    return { design: design ? design : {}, currentUser: UserStore.currentUser(), commentPos: []};
   },
 
   componentDidMount: function() {
     this.designStoreListener = DesignStore.addListener(this.__onDesignChange);
     this.userStoreListener = UserStore.addListener(this.__onUserChange);
-    ClientActions.getDesign(this.props.params.designId);
     ClientActions.fetchDesigns();
+    ClientActions.getDesign(this.props.params.designId);
 
     if (!this.state.currentUser) {
       HashHistory.push("/");
@@ -46,8 +48,8 @@ var DesignShow = React.createClass({
   },
 
   componentWillReceiveProps: function() {
-    ClientActions.getDesign(this.props.params.designId);
     ClientActions.fetchDesigns();
+    ClientActions.getDesign(this.props.params.designId);
   },
 
   leftDesignHandler: function() {
@@ -91,7 +93,29 @@ var DesignShow = React.createClass({
     HashHistory.push("/designs");
   },
 
+  // showComment: function(coords) {
+  //   this.setState({ commentPos: coords });
+  // },
+
   render: function() {
+    console.log(this.state.design.comments);
+    console.log(this.state);
+    if (this.state.design.comments) {
+      var self = this;
+      var commentsList = this.state.design.comments.map(function(comment) {
+        return <Comment key={comment.id} comment={comment}/>;
+      });
+      // console.log(commentsList);
+    }
+
+    if (this.state.design.design_url) {
+      var designImage = <img src={this.state.design.design_url} />;
+    }
+
+    if (this.state.commentPos) {
+      var commentShow = <div class="comment-show"></div>;
+    }
+
     return (
       <div className="design-show"
         style={
@@ -121,27 +145,13 @@ var DesignShow = React.createClass({
               <div className="design-desc">{this.state.design.description}</div>
             </div>
             <ul className="comments-list">
-              <li className="comment">Wow what a dope picture dude such awesome work!</li>
-              <li className="comment">I think the purple doesn't really work right here.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">I am not really sure what you were going for I think it is nice but can be a lot better. The lighting is all off and the colors don't work with one another.</li>
-              <li className="comment">This is soooooo ugly ewww.</li>
-              <li className="comment">Yeah wow nice for sure.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
-              <li className="comment">This project is really cool, but still unfinished.</li>
+              {commentsList}
             </ul>
           </div>
 
           <div className="design-url-show">
-            <img src={this.state.design.design_url} />
+            {commentShow}
+            {designImage}
             <div className="comment-form-box">
               <span className="comment-form">Comment form goes here...</span>
             </div>
