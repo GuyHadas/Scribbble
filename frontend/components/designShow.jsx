@@ -175,11 +175,12 @@ var DesignShow = React.createClass({
         closeCommentForm={this.closeCommentForm}
         xPos={this.xPos}
         yPos={this.yPos}
-        designId={this.state.design.id}/>;
+        designId={this.state.design.id}
+        />;
       var leftFormPin = this.state.commentFormPos[0] - 13;
       var topFormPin = this.state.commentFormPos[1] - 25;
       var commentFormPin = <img
-        className="hvr-pulse-grow"
+        className="hvr-pulse"
         src="greenPin.svg"
         style={{
           width: "25px",
@@ -189,7 +190,9 @@ var DesignShow = React.createClass({
           position: "absolute",
         }}/>;
       var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-      var designUrlMarginBottom = "25px";
+      if (window.innerWidth < 1400) {
+        var designUrlMarginBottom = "25px";
+      }
     }
 
     return (

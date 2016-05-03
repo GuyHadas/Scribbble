@@ -6,13 +6,15 @@ var ClientActions = require('../actions/clientActions.js');
 var CommentForm = React.createClass({
 
   getInitialState: function() {
-    return {body: ""};
+    return {body: "", opacity: 0};
   },
 
   componentDidMount: function() {
     var self = this;
 
     ReactDOM.findDOMNode(self.refs.autoFocus).focus();
+
+    this.setState({opacity: 100});
 
   },
 
@@ -33,7 +35,7 @@ var CommentForm = React.createClass({
 
   render: function() {
     return (
-      <div className="comment-form-box">
+      <div className="comment-form-box" style={{opacity: this.state.opacity}}>
         <div className="comment-form">
           <form className="comment-form" onSubmit={this.submitHandler}>
             <textarea
