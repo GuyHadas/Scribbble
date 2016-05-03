@@ -18,7 +18,7 @@ var DesignShow = React.createClass({
       currentUser: UserStore.currentUser(),
       commentPos: [],
       commentFormOpen: false,
-      commentFormPos: []
+      commentFormPos: [],
     };
   },
 
@@ -113,11 +113,11 @@ var DesignShow = React.createClass({
   },
 
   showComment: function(coords) {
-    this.setState({ commentPos: coords });
+    this.setState({ commentPos: coords});
   },
 
   unshowComment: function() {
-    this.setState({ commentPos: []});
+    this.setState({ commentPos: [] });
   },
 
   openCommentForm: function(e) {
@@ -159,13 +159,29 @@ var DesignShow = React.createClass({
       //adjust position for image size
       var left = this.state.commentPos[0] - 13;
       var top = this.state.commentPos[1] - 25;
+
       var commentPin = <img
         src="yellowPin.svg"
+        id="yellow-comment-pin"
+        className="hvr-pulse"
         style={{
           width: "25px",
           height: "25px",
           left: left,
           top: top,
+          position: "absolute",
+        }}/>;
+    } else {
+      commentPin = <img
+        src="yellowPin.svg"
+        id="yellow-comment-pin"
+        className="hvr-pulse"
+        style={{
+          opacity: "0",
+          width: "25px",
+          height: "25px",
+          left: 0,
+          top: 0,
           position: "absolute",
         }}/>;
     }

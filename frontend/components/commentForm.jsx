@@ -15,7 +15,6 @@ var CommentForm = React.createClass({
     ReactDOM.findDOMNode(self.refs.autoFocus).focus();
 
     this.setState({opacity: 100});
-
   },
 
   bodyChange: function(e) {
