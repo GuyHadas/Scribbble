@@ -17,7 +17,19 @@ var Login = React.createClass({
   submitHandler: function(e) {
     e.preventDefault();
     ClientActions.clearErrors();
-    ClientActions.loginUser(this.state);
+
+    if (this.state.formType === "logIn") {
+      ClientActions.loginUser({
+        username: this.state.username,
+        password: this.state.password
+      });
+    } else {
+      ClientActions.createUser({
+        username: this.state.username,
+        password: this.state.password
+      });
+    }
+    this.setState({ username: "", password: "", formType: "logIn" });
   },
 
   componentDidMount: function() {
@@ -27,7 +39,6 @@ var Login = React.createClass({
       ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
       500);
   },
-
 
   usernameChange: function(e) {
     e.preventDefault();
@@ -41,7 +52,7 @@ var Login = React.createClass({
 
   demoLoginHandler: function(e) {
     e.preventDefault();
-    this.setState({ username: "", password: "" });
+    this.setState({ username: "", password: "", formType: "logIn"});
     var _username = this.DEMO_USERNAME.split("").slice();
     this.fillDemoUsername(_username);
   },
@@ -78,9 +89,52 @@ var Login = React.createClass({
     }
   },
 
+  toggleFormType: function() {
+    if (this.state.formType === "logIn") {
+      this.setState({ formType: "signUp" });
+    } else {
+      this.setState({ formType: "logIn" });
+    }
+  },
+
   render: function() {
+    if (this.state.formType === "logIn") {
+      var toggleFormType = <div className="session-form-toggle">
+        Don't have an account? <span
+        onClick={this.toggleFormType}
+        className="session-form-toggle-btn"
+        >
+          Sign Up
+        </span>
+      </div>;
+
+      var submitAction = <input
+          type="submit"
+          className="modal-submit-btn"
+          value="Login"
+        />;
+    } else {
+      var toggleFormType = <div className="session-form-toggle">
+        Already have an account? <span
+        onClick={this.toggleFormType}
+        className="session-form-toggle-btn"
+        >
+          Login
+        </span>
+      </div>;
+
+      var submitAction = <input
+          type="submit"
+          className="modal-submit-btn"
+          value="Sign Up"
+        />;
+    }
+
     return (
       <form className="modal-form" onSubmit={this.submitHandler}>
+
+        {toggleFormType}
+
         <input
           type="text"
           className="form-textbox"
@@ -96,7 +150,8 @@ var Login = React.createClass({
           onChange={this.passwordChange}
           placeholder="Password"/>
 
-        <input type="submit" className="modal-submit-btn" value="Login"/>
+        {submitAction}
+
         <div
           id="demo-login-btn"
           className="modal-submit-btn"

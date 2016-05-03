@@ -202,3 +202,12 @@
   align-items: center;
   margin-top: 15px;
 }
+
+.session-form-toggle {
+  margin-bottom: 35px;
+}
+
+.session-form-toggle-btn {
+  color: #26a69a;
+  cursor: pointer;
+}
