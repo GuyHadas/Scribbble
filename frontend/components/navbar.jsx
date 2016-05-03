@@ -79,7 +79,7 @@ var Navbar = React.createClass({
     if (this.state.currentUser) {
       var sessionButtons =
       <div className="session-buttons">
-        <DesignModal />
+        <DesignModal userId={this.state.currentUser.user.id}/>
         <div className="session-buttons"><LogOut/></div>
       </div>;
     } else {

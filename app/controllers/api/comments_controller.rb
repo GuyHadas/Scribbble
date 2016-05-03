@@ -2,7 +2,7 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
+    # @comment.user_id = current_user.id
     if @comment.save
       @design = Design.includes(comments: :user).find(comment_params[:design_id])
       render 'api/designs/show'
@@ -24,6 +24,6 @@ class Api::CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comment).permit(:body, :x_pos, :y_pos, :design_id)
+    params.require(:comment).permit(:body, :x_pos, :y_pos, :design_id, :user_id)
   end
 end

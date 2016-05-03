@@ -38,7 +38,8 @@ var DesignForm = React.createClass({
     ClientActions.createDesign({
       title: this.state.title,
       description: this.state.description,
-      design_url: this.state.design_url
+      design_url: this.state.design_url,
+      userId: this.props.userId
     });
   },
 

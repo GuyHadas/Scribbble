@@ -2,9 +2,9 @@
 
 if @user
   json.user do
-    json.extract! @user, :username
+    json.extract! @user, :username, :id
   end
-end 
+end
 
 if @errors
   json.errors do

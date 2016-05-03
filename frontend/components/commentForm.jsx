@@ -28,7 +28,8 @@ var CommentForm = React.createClass({
       body: this.state.body,
       xPos: this.props.xPos,
       yPos: this.props.yPos,
-      designId: this.props.designId
+      designId: this.props.designId,
+      userId: this.props.userId
     });
   },
 

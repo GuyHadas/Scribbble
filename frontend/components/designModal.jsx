@@ -66,7 +66,7 @@ var DesignModal = React.createClass({
                 >
           <div className="modal">
             {errors}
-            <DesignForm />
+            <DesignForm userId={this.props.userId}/>
           </div>
         </Modal>
       </div>

@@ -12,7 +12,7 @@ class Api::DesignsController < ApplicationController
 
   def create
     @design = Design.new(design_params)
-    @design.user_id = current_user.id
+    # @design.user_id = current_user.id
     if @design.save
       render :show
     else
@@ -39,7 +39,7 @@ class Api::DesignsController < ApplicationController
 
   private
   def design_params
-    params.require(:design).permit(:title, :description, :design_url)
+    params.require(:design).permit(:title, :description, :design_url, :user_id)
   end
 
 end

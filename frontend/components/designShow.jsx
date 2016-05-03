@@ -187,11 +187,13 @@ var DesignShow = React.createClass({
     }
 
     if (this.state.commentFormOpen) {
+      console.log(this.state.currentUser.user.id);
       var commentForm = <CommentForm
         closeCommentForm={this.closeCommentForm}
         xPos={this.xPos}
         yPos={this.yPos}
         designId={this.state.design.id}
+        userId={this.state.currentUser.user.id}
         />;
       var leftFormPin = this.state.commentFormPos[0] - 13;
       var topFormPin = this.state.commentFormPos[1] - 25;
