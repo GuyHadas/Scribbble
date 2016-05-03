@@ -70,7 +70,7 @@ var Navbar = React.createClass({
   },
 
   render: function() {
-    var modalForm = this.state.signIn ? <LogIn /> : <SignUp />;
+    var modalForm = this.state.signIn ? <LogIn formType={"logIn"}/> : <LogIn formType={"signUp"}/>;
 
     if (this.state.errors.length > 0) {
       var errors = <Errors errors={this.state.errors}/>;

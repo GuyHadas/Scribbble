@@ -6,12 +6,12 @@ var ClientActions = require("../actions/clientActions.js");
 
 var Login = React.createClass({
 
-  demoUsername: "demo",
+  DEMO_USERNAME: "demo",
 
-  demoPassword: "asdfasdf",
+  DEMO_PASSWORD: "asdfasdf",
 
   getInitialState: function() {
-    return { username: "", password: "" };
+    return { username: "", password: "", formType: this.props.formType};
   },
 
   submitHandler: function(e) {
@@ -42,7 +42,40 @@ var Login = React.createClass({
   demoLoginHandler: function(e) {
     e.preventDefault();
     this.setState({ username: "", password: "" });
-    // fillInUsername
+    var _username = this.DEMO_USERNAME.split("").slice();
+    this.fillDemoUsername(_username);
+  },
+
+  fillDemoUsername: function(_username) {
+    var self = this;
+    if (_username.length > 0) {
+      setTimeout(function() {
+        self.setState({
+          username: self.state.username + _username.shift()
+        });
+
+        self.fillDemoUsername(_username);
+      }, 120);
+    } else {
+      var _password = this.DEMO_PASSWORD.split("").slice();
+      this.fillDemoPassword(_password);
+    }
+  },
+
+  fillDemoPassword: function(_password) {
+    var self = this;
+    if (_password.length > 0) {
+      setTimeout(function() {
+        self.setState({
+          password: self.state.password + _password.shift()
+        });
+
+        self.fillDemoPassword(_password);
+      }, 120);
+    } else {
+      var e = { preventDefault: function() {} };
+      this.submitHandler(e);
+    }
   },
 
   render: function() {
