@@ -6,8 +6,12 @@ var ClientActions = require("../actions/clientActions.js");
 
 var Login = React.createClass({
 
+  demoUsername: "demo",
+
+  demoPassword: "asdfasdf",
+
   getInitialState: function() {
-    return {username: "", password: ""};
+    return { username: "", password: "" };
   },
 
   submitHandler: function(e) {
@@ -35,6 +39,12 @@ var Login = React.createClass({
     this.setState({password: e.target.value});
   },
 
+  demoLoginHandler: function(e) {
+    e.preventDefault();
+    this.setState({ username: "", password: "" });
+    // fillInUsername
+  },
+
   render: function() {
     return (
       <form className="modal-form" onSubmit={this.submitHandler}>
@@ -54,6 +64,12 @@ var Login = React.createClass({
           placeholder="Password"/>
 
         <input type="submit" className="modal-submit-btn" value="Login"/>
+        <div
+          id="demo-login-btn"
+          className="modal-submit-btn"
+          onClick={this.demoLoginHandler}>
+            Demo Login
+        </div>
       </form>
     );
   }

@@ -194,3 +194,11 @@
   background-color: #E3696E;
   transform: translateY(-1px);
 }
+
+#demo-login-btn {
+  display: flex;
+  font-family: BlinkMacSystemFont;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
