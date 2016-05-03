@@ -20,12 +20,8 @@ var DesignForm = React.createClass({
     setTimeout(function() {
       ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
       500);
-
   },
 
-  componentWillUnmount: function() {
-    // ClientActions.clearErrors();
-  },
 
   titleChange: function(e) {
     e.preventDefault();
@@ -44,7 +40,6 @@ var DesignForm = React.createClass({
       description: this.state.description,
       design_url: this.state.design_url
     });
-    // ClientActions.clearErrors();
   },
 
   imageUrlUpload: function(url) {

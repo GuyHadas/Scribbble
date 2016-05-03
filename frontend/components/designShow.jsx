@@ -18,6 +18,7 @@ var DesignShow = React.createClass({
       currentUser: UserStore.currentUser(),
       commentPos: [],
       commentFormOpen: false,
+      commentFormPos: []
     };
   },
 
@@ -67,6 +68,7 @@ var DesignShow = React.createClass({
       this.setState({ commentFormOpen: false });
     }
     this.backgroundColor = this.randomBackgroundColor();
+    this.unshowComment();
   },
 
   leftDesignHandler: function() {
@@ -122,7 +124,7 @@ var DesignShow = React.createClass({
     this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
     this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
 
-    this.setState({ commentFormOpen: true });
+    this.setState({ commentFormOpen: true, commentFormPos: [this.xPos, this.yPos] });
   },
 
   closeCommentForm: function() {
@@ -133,7 +135,11 @@ var DesignShow = React.createClass({
     if (this.state.design.comments) {
       var self = this;
       var commentsList = this.state.design.comments.map(function(comment) {
-        return <Comment key={comment.id} comment={comment} showComment={self.showComment} unshowComment={self.unshowComment}/>;
+        return <Comment
+          key={comment.id}
+          comment={comment}
+          showComment={self.showComment}
+          unshowComment={self.unshowComment}/>;
       });
     }
 
@@ -150,12 +156,18 @@ var DesignShow = React.createClass({
     }
 
     if (this.state.commentPos.length > 0) {
-      var commentShow = <div className="comment-show" style={{
-
-          left: this.state.commentPos[0],
-          top: this.state.commentPos[1],
-
-        } }></div>;
+      //adjust position for image size
+      var left = this.state.commentPos[0] - 13;
+      var top = this.state.commentPos[1] - 25;
+      var commentPin = <img
+        src="yellowPin.svg"
+        style={{
+          width: "25px",
+          height: "25px",
+          left: left,
+          top: top,
+          position: "absolute",
+        }}/>;
     }
 
     if (this.state.commentFormOpen) {
@@ -164,6 +176,17 @@ var DesignShow = React.createClass({
         xPos={this.xPos}
         yPos={this.yPos}
         designId={this.state.design.id}/>;
+      var leftFormPin = this.state.commentFormPos[0] - 13;
+      var topFormPin = this.state.commentFormPos[1] - 25;
+      var commentFormPin = <img
+        src="greenPin.svg"
+        style={{
+          width: "25px",
+          height: "25px",
+          left: leftFormPin,
+          top: topFormPin,
+          position: "absolute",
+        }}/>;
       var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
       var designUrlMarginBottom = "25px";
     }
@@ -202,7 +225,8 @@ var DesignShow = React.createClass({
           </div>
 
           <div className="design-url-show" style={ { boxShadow: designUrlShadow, marginBottom: designUrlMarginBottom }}>
-            {commentShow}
+            {commentPin}
+            {commentFormPin}
             {designImage}
             {commentForm}
           </div>

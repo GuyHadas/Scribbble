@@ -33,7 +33,6 @@ var DesignModal = React.createClass({
   },
 
   closeModal: function(){
-    console.log("closing Modal");
     this.setState({ modalOpen: false});
     DesignFormModalStyle.content.opacity = 0;
   },

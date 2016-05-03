@@ -5,17 +5,28 @@ var HashHistory = require('react-router').hashHistory;
 var Comment = React.createClass({
 
   handleMouseEnter: function() {
-    // console.log(this.props.showComment);
     this.props.showComment([this.props.comment.x_pos, this.props.comment.y_pos]);
+    this.disableMouseOver = false;
+  },
+
+  handleClick: function() {
+    this.props.showComment([this.props.comment.x_pos, this.props.comment.y_pos]);
+    this.disableMouseOver = true;
   },
 
   handleMouseLeave: function() {
-    this.props.unshowComment();
+    if (!this.disableMouseOver) {
+      this.props.unshowComment();
+    }
   },
 
   render: function() {
     return (
-      <li className="comment" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <li
+        className="comment"
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        onClick={this.handleClick}>
         {this.props.comment.body}
       </li>
 
