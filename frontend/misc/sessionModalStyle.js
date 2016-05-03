@@ -2,16 +2,21 @@
 
 var SessionModalStyle = {
   overlay : {
+    position        : "fixed",
     backgroundColor : 'rgba(30,30,30,0.85)',
     zIndex          : 10,
+    display         : "flex",
+    justifyContent  : 'center',
+    alignItems      : 'center',
+    height          : "100vh",
   },
 
   content : {
-    position        : 'fixed',
-    top             : '25%',
-    bottom          : '25%',
-    left            : '40%',
-    right           : '40%',
+    position        : "relative",
+    left            : "0px",
+    right           : "0px",
+    top             : "0px",
+    bottom          : "0px",
     width           : "360px",
     height          : "260px",
     display         : 'flex',
