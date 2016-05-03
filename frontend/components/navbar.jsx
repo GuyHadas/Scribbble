@@ -5,6 +5,7 @@ var Modal = require("react-modal");
 
 var UserStore = require("../stores/userStore.js");
 var ErrorStore = require('../stores/errorStore.js');
+var ClientActions = require('../actions/clientActions.js');
 
 var LogIn = require("./login.jsx");
 var SignUp = require("./signup.jsx");
@@ -42,6 +43,7 @@ var Navbar = React.createClass({
   componentDidMount: function() {
     this.userStoreListener = UserStore.addListener(this.__onUserChange);
     this.errorStoreListener = ErrorStore.addListener(this.__onErrorChange);
+    ClientActions.fetchCurrentUser();
   },
 
   componentWillUnmount: function() {

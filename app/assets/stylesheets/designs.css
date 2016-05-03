@@ -67,7 +67,7 @@
   background-color: white;
   min-width: 320px;
   max-width: 320px;
-  height: 500px;
+  height: 600px;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
@@ -87,7 +87,7 @@
     background-color: white;
     min-width: 320px;
     max-width: 320px;
-    height: 500px;
+    height: 600px;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
@@ -136,8 +136,8 @@
 
 
 .design-url-show {
-  width: 650px;
-  height: 500px;
+  width: 667px;
+  height: 600px;
   margin-top: 25px;
   border-radius: 3px;
   position: relative;
@@ -145,8 +145,8 @@
 
 @media screen and (min-width: 1400px) {
   .design-url-show {
-    width: 650px;
-    height: 500px;
+    width: 667px;
+    height: 600px;
     margin-left: 50px;
     margin-right: 25px;
     margin-top: 0px;
@@ -156,8 +156,8 @@
 }
 
 .design-url-show img {
-  width: 650px;
-  height: 400px;
+  width: 667px;
+  height: 500px;
   border-radius: 3px;
   cursor: pointer;
 }
@@ -165,7 +165,7 @@
 .comment-form-box {
   display: flex;
   flex-direction: column;
-  width: 650px;
+  width: 667px;
   height: 100px;
   background-color: white;
   transform: translateY(-3px);
@@ -177,7 +177,7 @@
   .comment-form-box {
     display: flex;
     flex-direction: column;
-    width: 650px;
+    width: 667px;
     background-color: white;
     transform: translateY(-3px);
     border-top: 1px solid #ccc;

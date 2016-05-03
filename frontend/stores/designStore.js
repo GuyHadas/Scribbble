@@ -7,9 +7,10 @@ var _designs = {};
 var DesignStore = new Store(dispatcher);
 
 DesignStore.all = function () {
-  return Object.keys(_designs).map(function(designId) {
+  var designs = Object.keys(_designs).map(function(designId) {
     return _designs[designId];
   });
+  return designs.reverse();
 };
 
 DesignStore.find = function(designId) {
