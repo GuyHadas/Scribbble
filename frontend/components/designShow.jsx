@@ -179,6 +179,7 @@ var DesignShow = React.createClass({
       var leftFormPin = this.state.commentFormPos[0] - 13;
       var topFormPin = this.state.commentFormPos[1] - 25;
       var commentFormPin = <img
+        className="hvr-pulse-grow"
         src="greenPin.svg"
         style={{
           width: "25px",
