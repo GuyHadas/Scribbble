@@ -14,15 +14,17 @@ var DesignForm = React.createClass({
   },
 
   componentDidMount: function() {
+    ClientActions.clearErrors();
     var self = this;
 
     setTimeout(function() {
       ReactDOM.findDOMNode(self.refs.autoFocus).focus(); },
       500);
+
   },
 
   componentWillUnmount: function() {
-    ClientActions.clearErrors();
+    // ClientActions.clearErrors();
   },
 
   titleChange: function(e) {
@@ -37,12 +39,12 @@ var DesignForm = React.createClass({
 
   submitHandler: function(e) {
     e.preventDefault();
-    ClientActions.clearErrors();
     ClientActions.createDesign({
       title: this.state.title,
       description: this.state.description,
       design_url: this.state.design_url
     });
+    // ClientActions.clearErrors();
   },
 
   imageUrlUpload: function(url) {

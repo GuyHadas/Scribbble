@@ -5,6 +5,7 @@ var Modal = require("react-modal");
 
 var DesignForm = require("./designForm.jsx");
 var ErrorStore = require('../stores/errorStore.js');
+var DesignStore = require("../stores/designStore.js");
 
 var Errors = require("./errors.jsx");
 
@@ -18,10 +19,13 @@ var DesignModal = React.createClass({
 
   componentDidMount: function() {
     this.errorStoreListener = ErrorStore.addListener(this.__onErrorChange);
+    this.designStoreListener = DesignStore.addListener(this.__onDesignsChange);
+    this.designCount = DesignStore.all().length;
   },
 
   componentWillUnmount: function() {
     this.errorStoreListener.remove();
+    this.designStoreListener.remove();
   },
 
   __onErrorChange: function() {
@@ -29,6 +33,7 @@ var DesignModal = React.createClass({
   },
 
   closeModal: function(){
+    console.log("closing Modal");
     this.setState({ modalOpen: false});
     DesignFormModalStyle.content.opacity = 0;
   },
@@ -39,6 +44,13 @@ var DesignModal = React.createClass({
 
   onModalOpen: function() {
     DesignFormModalStyle.content.opacity = 100;
+  },
+
+  __onDesignsChange: function() {
+    if (DesignStore.all().length > this.designCount) {
+      this.closeModal();
+    }
+    this.designCount = DesignStore.all().length;
   },
 
   render: function() {

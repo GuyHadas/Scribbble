@@ -41,6 +41,11 @@ var DesignShow = React.createClass({
 
   __onDesignChange: function() {
     var design = DesignStore.find(this.props.params.designId);
+    if (this.state.design.comments) {
+      if (design.comments.length > this.state.design.comments.length) {
+        this.closeCommentForm();
+      }
+    }
     this.setState({ design: design ? design : {} });
     this.designs = DesignStore.all();
   },

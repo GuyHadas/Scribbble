@@ -6,7 +6,6 @@ var Modal = require("react-modal");
 var UserStore = require("../stores/userStore.js");
 var ErrorStore = require('../stores/errorStore.js');
 
-
 var LogIn = require("./login.jsx");
 var SignUp = require("./signup.jsx");
 var LogOut = require("./logout.jsx");
@@ -19,7 +18,12 @@ var SessionModalStyle = require("../misc/sessionModalStyle.js");
 var Navbar = React.createClass({
 
   getInitialState: function() {
-    return { currentUser: UserStore.currentUser(), modalOpen: false, signIn: false, errors: ErrorStore.all() };
+    return {
+      currentUser: UserStore.currentUser(),
+      modalOpen: false,
+      signIn: false,
+      errors: ErrorStore.all(),
+     };
   },
 
   closeModal: function(){
