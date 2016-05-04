@@ -37,12 +37,34 @@ var DesignShow = React.createClass({
     }
 
     $('body').scrollTop(0);
+    $('body').on('keydown', this.handleKey);
+  },
+
+  handleKey: function(e) {
+    switch (e.which) {
+      case 37: {
+        //left
+        this.prevDesignHandler();
+        break;
+      }
+      case 39: {
+        //right
+        this.nextDesignHandler();
+        break;
+      }
+      case 27: {
+        //esc
+        HashHistory.push("/");
+        break;
+      }
+    }
   },
 
   componentWillUnmount: function() {
     this.designStoreListener.remove();
     this.userStoreListener.remove();
     Tour.cancel();
+    $('body').off('keydown', this.handleKey);
   },
 
   __onDesignChange: function() {
@@ -80,7 +102,7 @@ var DesignShow = React.createClass({
     this.unshowComment();
   },
 
-  leftDesignHandler: function() {
+  prevDesignHandler: function() {
     var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
     if (prevDesignIdx < 0) {
       var prevDesignId = this.designs[this.designs.length - 1].id.toString();
@@ -91,7 +113,7 @@ var DesignShow = React.createClass({
     HashHistory.push("/designs/" + prevDesignId);
   },
 
-  rightDesignHandler: function() {
+  nextDesignHandler: function() {
     var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
 
     if (nextDesignIdx === this.designs.length) {
@@ -235,7 +257,7 @@ var DesignShow = React.createClass({
         </div>
 
         <div className="main-design-show">
-          <div className="left-design" onClick={this.leftDesignHandler}>
+          <div className="left-design" onClick={this.prevDesignHandler}>
             <img className="left-arrow" src="leftarrow.png"/>
           </div>
 
@@ -262,7 +284,7 @@ var DesignShow = React.createClass({
             {commentForm}
           </div>
 
-          <div className="right-design" onClick={this.rightDesignHandler}>
+          <div className="right-design" onClick={this.nextDesignHandler}>
             <img className="right-arrow" src="rightArrow.png"/>
           </div>
         </div>
