@@ -9,14 +9,14 @@ var HomeVideo = React.createClass({
 
 
     return (
-      <video autoPlay loop preload className="back-video">
-
-           <source src={ root } type="video/mp4" />
-           <source src={ root } type="video/webm" />
-           <source src={ root } type="video/ogg" />
-
-           Your browser does not support the <code>video</code> tag.
-         </video>
+      <div className="fullscreen">
+        <video autoPlay muted loop preload className="back-video">
+         <source src={ root } type="video/mp4" />
+         <source src={ root } type="video/webm" />
+         <source src={ root } type="video/ogg" />
+          Your browser does not support the <code>video</code> tag.
+        </video>
+      </div>
     );
   }
 });
