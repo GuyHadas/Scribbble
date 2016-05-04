@@ -45,9 +45,12 @@ var Home = React.createClass({
       <div className="splash-main">
         <HomeVideo />
         <div className="splash-main-header">
-          <img src="Scribbble-outline.svg" />
-          <span className="tagline"><img src="Tagline-outline.svg" /></span>
+          <div className="splash-title-tagline">
+            <img src="Scribbble-outline.svg" />
+            <span className="tagline"><img src="Tagline-outline.svg" /></span>
+          </div>
         </div>
+
       </div>
     );
   }

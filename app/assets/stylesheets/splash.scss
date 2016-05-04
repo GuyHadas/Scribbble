@@ -72,12 +72,20 @@
 
 .splash-main-header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   // background-color: rgba(204, 204, 204, 0.6);
   padding: 15px;
 }
+
+.splash-title-tagline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .tagline {
   align-self: flex-end;
