@@ -28,6 +28,8 @@ var DesignIndex = React.createClass({
     if (this.props.params.designId) {
       HashHistory.push("/designs/" + this.props.params.designId);
     }
+
+    $('body').scrollTop(0);
   },
 
   __onDesignsChange: function() {

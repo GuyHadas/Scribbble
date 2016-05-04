@@ -50,6 +50,7 @@
   border: 2px dashed #ccc;
   margin-bottom: 25px;
   transition: border .5s;
+  cursor: pointer;
 }
 
 .form-image-drop:hover {

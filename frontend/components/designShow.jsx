@@ -36,12 +36,13 @@ var DesignShow = React.createClass({
       HashHistory.push("/");
     }
 
-    Tour.start();
+    $('body').scrollTop(0);
   },
 
   componentWillUnmount: function() {
     this.designStoreListener.remove();
     this.userStoreListener.remove();
+    Tour.cancel();
   },
 
   __onDesignChange: function() {
@@ -63,6 +64,10 @@ var DesignShow = React.createClass({
     if (!this.state.currentUser) {
       HashHistory.push("/");
     }
+  },
+
+  startTour: function() {
+    Tour.start();
   },
 
   componentWillReceiveProps: function() {
@@ -191,7 +196,6 @@ var DesignShow = React.createClass({
     }
 
     if (this.state.commentFormOpen) {
-      console.log(this.state.currentUser.user.id);
       var commentForm = <CommentForm
         closeCommentForm={this.closeCommentForm}
         xPos={this.xPos}
@@ -213,7 +217,7 @@ var DesignShow = React.createClass({
         }}/>;
       var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
       if (window.innerWidth < 1400) {
-        var designUrlMarginBottom = "25px";
+        var designUrlMarginBottom = "0px";
       }
     }
 
@@ -227,6 +231,7 @@ var DesignShow = React.createClass({
 
         <div className="design-show-back">
           <div className="back-to-index-btn" onClick={this.backToIndex}>Back</div>
+            <div className="explore-features-btn" onClick={this.startTour}>Explore Features</div>
         </div>
 
         <div className="main-design-show">
