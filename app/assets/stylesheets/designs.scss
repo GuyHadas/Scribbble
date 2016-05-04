@@ -190,6 +190,8 @@
 .design-show-back {
   align-self: flex-start;
   margin-top: 25px;
+  display: flex;
+  flex-direction: row;
 }
 
 @media screen and (min-width: 1400px) {
