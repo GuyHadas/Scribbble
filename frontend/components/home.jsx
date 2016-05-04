@@ -42,8 +42,12 @@ var Home = React.createClass({
   render: function() {
 
     return (
-      <div className="vid">
+      <div className="splash-main">
         <HomeVideo />
+        <div className="splash-main-header">
+          <img src="Scribbble-outline.svg" />
+          <span className="tagline"><img src="Tagline-outline.svg" /></span>
+        </div>
       </div>
     );
   }
