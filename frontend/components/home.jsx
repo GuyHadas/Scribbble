@@ -8,6 +8,7 @@ var ClientActions = require("../actions/clientActions.js");
 var Login = require("./login.jsx");
 var Logout = require("./logout.jsx");
 var SignUp = require("./signup.jsx");
+var HomeVideo = require("./homeVideo.jsx");
 
 var Home = React.createClass({
 
@@ -40,6 +41,7 @@ var Home = React.createClass({
 
     return (
       <div>
+        <HomeVideo />
       </div>
     );
   }

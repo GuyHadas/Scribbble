@@ -29,7 +29,6 @@ var Login = React.createClass({
         password: this.state.password
       });
     }
-    this.setState({ username: "", password: "", formType: "logIn" });
   },
 
   componentDidMount: function() {
