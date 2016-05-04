@@ -21,6 +21,7 @@ var Home = React.createClass({
     if (this.state.currentUser) {
       HashHistory.push("/designs");
     }
+    $('body').addClass("hidden-overflow");
   },
 
   componentDidUpdate: function() {
@@ -31,6 +32,7 @@ var Home = React.createClass({
 
   componentWillUnmount: function() {
     this.userStoreListener.remove();
+    $('body').removeClass("hidden-overflow");
   },
 
   __onChange: function() {
@@ -40,7 +42,7 @@ var Home = React.createClass({
   render: function() {
 
     return (
-      <div>
+      <div className="vid">
         <HomeVideo />
       </div>
     );
