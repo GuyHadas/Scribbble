@@ -10,6 +10,8 @@ var DesignStore = require("../stores/designStore.js");
 var Comment = require("./comment.jsx");
 var CommentForm = require("./commentForm.jsx");
 
+var Tour = require("../tour.js");
+
 var DesignShow = React.createClass({
   getInitialState: function() {
     var design = DesignStore.find(this.props.params.designId);
@@ -33,6 +35,8 @@ var DesignShow = React.createClass({
     if (!this.state.currentUser) {
       HashHistory.push("/");
     }
+
+    Tour.start();
   },
 
   componentWillUnmount: function() {
