@@ -37,7 +37,7 @@
 .design-show {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   min-height: calc(100vh - 50px);
 }
@@ -76,8 +76,8 @@
   overflow: auto;
   padding-left: 40px;
   padding-right: 40px;
-  margin-top: 25px;
   margin-right: 25px;
+  transition: margin-right 1s;
 }
 
 @media screen and (min-width: 1400px) {
@@ -96,7 +96,7 @@
     overflow: auto;
     padding-left: 40px;
     padding-right: 40px;
-    margin-top: 0px;
+    margin-top: 25px;
     margin-right: 50px;
     margin-left: 25px;
   }
@@ -137,10 +137,10 @@
 .design-url-show {
   width: 667px;
   height: 600px;
-  margin-top: 25px;
   border-radius: 3px;
   position: relative;
   margin-left: 25px;
+  transition: margin-left 1s;
 }
 
 @media screen and (min-width: 1400px) {
@@ -149,7 +149,7 @@
     height: 600px;
     margin-left: 50px;
     margin-right: 25px;
-    margin-top: 0px;
+    margin-top: 25px;
     border-radius: 3px;
     position: relative;
   }
@@ -188,17 +188,18 @@
 
 .design-show-back {
   align-self: flex-start;
-  margin-top: 25px;
   display: flex;
   flex-direction: row;
   width: 100%;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 50px;
 }
 
 @media screen and (min-width: 1400px) {
   .design-show-back {
     align-self: flex-start;
-    margin-top: 25px;
-    margin-bottom: 50px;
+    justify-content: flex-start;
   }
 }
 
@@ -230,6 +231,7 @@
 }
 
 
+
 .explore-features-btn {
   height: 50px;
   background-color: #ee6e73;
@@ -246,7 +248,7 @@
   font-weight: bold;
   font-size: 15px;
   letter-spacing: .5px;
-  margin-left: 25px;
+  margin-left: 50px;
 }
 
 .explore-features-btn:hover {
@@ -255,6 +257,14 @@
   transform: translateY(-5px);
   cursor: pointer;
 }
+
+@media screen and (min-width: 1400px) {
+  .explore-features-btn {
+    margin-left: 25px;
+  }
+}
+
+
 
 .left-design {
   min-width: 100px;
@@ -265,40 +275,20 @@
   margin-left: 25px;
   margin-right: 25px;
   border-radius: 50px;
-  transition: transform .5s;
+  transition: all .5s;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  order: 1;
   z-index: 10;
-  align-self: flex-start;
   position: absolute;
+  top: 60px;
   left: 25px;
-  top: 300px;
 }
 
 @media screen and (min-width: 1400px) {
   .left-design {
-    min-width: 100px;
-    height: 100px;
-    background-color : #f57171;
-    opacity: .6;
-    box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-    margin-left: 25px;
-    margin-right: 25px;
-    border-radius: 50px;
-    transition: transform .5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    order: 0;
-    z-index: 10;
-    position: relative;
-    align-self: center;
-    left: 0px;
-    top: 0px;
+    top: 400px;
   }
 }
 
@@ -323,36 +313,19 @@
   margin-left: 25px;
   margin-right: 25px;
   border-radius: 50px;
-  transition: transform .5s;
+  transition: all .5s;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: absolute;
+  top: 60px;
   right: 25px;
-  top: 300px;
 }
 
 @media screen and (min-width: 1400px) {
   .right-design {
-    min-width: 100px;
-    height: 100px;
-    background-color : #f57171;
-    opacity: .6;
-    box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-    margin-right: 100px;
-    margin-left: 25px;
-    margin-right: 25px;
-    border-radius: 50px;
-    transition: transform .5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: relative;
-    align-self: center;
-    left: 0px;
-    top: 0px;
+    top: 400px;
   }
 }
 
