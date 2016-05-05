@@ -81,13 +81,6 @@ designs = Design.create([
   },
 
   {
-    title: "Great Beard, Terrible Player.",
-    description: "Doesn't take much to get to the free throw line, but at least the man can grow some facial hair.",
-    design_url: "https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2283762/20_nba_4_thebeard.jpg",
-    user_id: 2
-  },
-
-  {
     title: "Chicken Heads",
     description: "Two options, which one do people prefer?",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/78433/screenshots/2680808/rooster_2016.png",
@@ -172,6 +165,7 @@ designs = Design.create([
     user_id: 8
   },
 
+
   {
     title: "Book Mountain",
     description: "A popup book design. Thank you Scribbble community.",
@@ -184,6 +178,13 @@ designs = Design.create([
     description: "Love drawing characters from my favorite show in the world!",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/119484/screenshots/2636852/str.png",
     user_id: 10
+  },
+
+  {
+    title: "Great Beard, Terrible Player.",
+    description: "Doesn't take much to get to the free throw line, but at least the man can grow some facial hair.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2283762/20_nba_4_thebeard.jpg",
+    user_id: 8
   },
 
   {
