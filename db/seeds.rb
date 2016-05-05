@@ -82,7 +82,7 @@ designs = Design.create([
 
   {
     title: "Great Beard, Terrible Player.",
-    description: "Doesn't take much to get too the free throw line, but at least the man can grow some facial hair.",
+    description: "Doesn't take much to get to the free throw line, but at least the man can grow some facial hair.",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2283762/20_nba_4_thebeard.jpg",
     user_id: 2
   },
@@ -123,6 +123,49 @@ designs = Design.create([
   },
 
   {
+    title: "Matchbox Madness",
+    description: "Feedback is appreciated.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/3460/screenshots/1595518/matchbox.png",
+    user_id: 7
+  },
+
+  {
+    title: "Monsters Inc Mike",
+    description: "A fun little project I started this weekend.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/97138/screenshots/1589366/mike.jpg",
+    user_id: 9
+  },
+
+  {
+    title: "And the winner is...",
+    description: "Not Leanoardo Dicaprio.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/840520/screenshots/2557506/giffy.gif",
+    user_id: 4
+  },
+
+  {
+    title: "Iglue",
+    description: "I glue you glue.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/41719/screenshots/924640/screen_shot_2013-02-02_at_12.49.58_pm.png",
+    user_id: 3
+  },
+
+  {
+    title: "Jellyfish Eyes.",
+    description: "How a jellyfish views the ocean.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/676831/screenshots/2139594/landscape.png",
+    user_id: 13
+  },
+
+  {
+    title: "Peace and Quiet.",
+    description: "This is my dream.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/31752/screenshots/1594741/mountains.png",
+    user_id: 10
+  },
+
+
+  {
     title: "Leap Ball-Frog",
     description: "Stephen Curry and LeBron James Who will come out on top?",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/99875/screenshots/2108890/nba_drib.gif",
@@ -130,10 +173,24 @@ designs = Design.create([
   },
 
   {
+    title: "Book Mountain",
+    description: "A popup book design. Thank you Scribbble community.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/6051/screenshots/1237069/book_mountains.png",
+    user_id: 7
+  },
+
+  {
     title: "Arya there?",
     description: "Love drawing characters from my favorite show in the world!",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/119484/screenshots/2636852/str.png",
     user_id: 10
+  },
+
+  {
+    title: "Tounge Ice Cream",
+    description: "Easy 3-step recipe, let me know if you want it.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/89028/screenshots/2512099/i_scream.png",
+    user_id: 12
   },
 
   {
@@ -179,11 +236,40 @@ designs = Design.create([
   },
 
   {
+    title: "Everyone's favorite couple ever.",
+    description: "Love drawing characters from my favorite show in the world!",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/30716/screenshots/1773053/carl___ellie_-_test_flight.png",
+    user_id: 9
+  },
+
+  {
     title: "MVP, Greatest player ever!",
     description: "Stop motion design of my favorite player, Steph Curry",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/26052/screenshots/2529956/stepbackcolor_dribbble.gif",
     user_id: 2
   },
+
+  {
+    title: "Hot Air Baloon Illustration",
+    description: "When you just wanna get away.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/569653/screenshots/1893098/air-baloon1.jpg",
+    user_id: 3
+  },
+
+  {
+    title: "Carnival",
+    description: "Ferris Wheels are surprisingly hard to draw. Got a lot of work to do to make this better.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/63407/screenshots/1456079/q_dribbble.png",
+    user_id: 13
+  },
+
+  {
+    title: "Simple Earth",
+    description: "Oh the things I do when I'm bored at work",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/510064/screenshots/1949296/dribbble.png",
+    user_id: 10
+  },
+
 
   {
     title: "Star Wars gif",
@@ -205,6 +291,14 @@ designs = Design.create([
     design_url: "https://d13yacurqjgara.cloudfront.net/users/10958/screenshots/1368887/shot.jpg",
     user_id: 6
   },
+
+  {
+    title: "Waffle Iphone Icon",
+    description: "Waffle delivery app.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/14268/screenshots/824210/waffle.png",
+    user_id: 4
+  },
+
 
   {
     title: "Twisted",
