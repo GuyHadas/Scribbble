@@ -3,7 +3,6 @@ comments = Comment.all
 commentExports = []
 
 comments.each do |comment|
-  p comment
   commentExports.push({
     body: comment.body,
     x_pos: comment.x_pos,
