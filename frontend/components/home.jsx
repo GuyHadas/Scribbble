@@ -46,8 +46,8 @@ var Home = React.createClass({
         <HomeVideo />
         <div className="splash-main-header">
           <div className="splash-title-tagline">
-            <span className="logo"><img src="Logo-large.png" /></span>
-            <span className="tagline"><img src="Tagline-large.png" /></span>
+            <span className="logo"><img src="logo-largest.png" /></span>
+            <span className="tagline"><img src="Tagline-largest.png" /></span>
           </div>
         </div>
 
