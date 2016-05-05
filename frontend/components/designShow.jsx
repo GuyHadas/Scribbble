@@ -155,7 +155,10 @@ var DesignShow = React.createClass({
     this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
     this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
 
-    this.setState({ commentFormOpen: true, commentFormPos: [this.xPos, this.yPos] });
+    this.setState({
+      commentFormOpen: true,
+      commentFormPos: [this.xPos, this.yPos]
+    });
   },
 
   closeCommentForm: function() {
@@ -238,9 +241,6 @@ var DesignShow = React.createClass({
           position: "absolute",
         }}/>;
       var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-      if (window.innerWidth < 1400) {
-        var designUrlMarginBottom = "0px";
-      }
     }
 
     return (
@@ -277,7 +277,7 @@ var DesignShow = React.createClass({
             </ul>
           </div>
 
-          <div className="design-url-show" style={ { boxShadow: designUrlShadow, marginBottom: designUrlMarginBottom }}>
+          <div className="design-url-show" style={ { boxShadow: designUrlShadow }}>
             {commentPin}
             {commentFormPin}
             {designImage}

@@ -114,7 +114,6 @@ var ApiUtil = {
   },
 
   createComment: function(comment) {
-    console.log(comment);
     $.ajax({
       type: 'POST',
       url: 'api/comments',

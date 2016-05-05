@@ -106,12 +106,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 25px;
+  text-align: center;
+  padding-top: 50px;
 }
 
+
 .design-title {
-  font-size: 24px;
+  font-size: 32px;
+  margin-bottom: 10px;
   display: flex;
+  font-weight: bold;
 }
 
 .design-username {
@@ -120,9 +124,9 @@
 
 .design-desc {
   padding-top: 15px;
-  padding-bottom: 25px;
+  padding-bottom: 50px;
   text-align: center;
-  font-weight: bold;
+  font-style: italic;
   border-bottom: 1px solid #ccc;
 }
 
@@ -192,14 +196,15 @@
   flex-direction: row;
   width: 100%;
   justify-content: center;
-  margin-top: 25px;
-  margin-bottom: 50px;
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 @media screen and (min-width: 1400px) {
   .design-show-back {
     align-self: flex-start;
     justify-content: flex-start;
+    margin-bottom: 50px;
   }
 }
 
@@ -267,13 +272,14 @@
 
 
 .left-design {
-  min-width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color : #f57171;
   opacity: .6;
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
   margin-left: 25px;
   margin-right: 25px;
+  margin-top: 13px;
   border-radius: 50px;
   transition: all .5s;
   display: flex;
@@ -289,6 +295,9 @@
 @media screen and (min-width: 1400px) {
   .left-design {
     top: 400px;
+    width: 100px;
+    height: 100px;
+    margin-top: 0px;
   }
 }
 
@@ -298,20 +307,26 @@
 }
 
 .left-arrow {
+  width: 40px;
+  height: 40px;
+  padding-right: 5px;
+}
+
+@media screen and (min-width: 1400px) {
   width: 70px;
   height: 70px;
   padding-right: 10px;
 }
 
 .right-design {
-  min-width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   background-color : #f57171;
   opacity: .6;
   box-shadow: 0px 6px 20px 0px rgba(0,0,0,0.75);
-  margin-right: 100px;
   margin-left: 25px;
   margin-right: 25px;
+  margin-top: 13px;
   border-radius: 50px;
   transition: all .5s;
   display: flex;
@@ -326,6 +341,9 @@
 @media screen and (min-width: 1400px) {
   .right-design {
     top: 400px;
+    width: 100px;
+    height: 100px;
+    margin-top: 0px;
   }
 }
 
@@ -335,11 +353,16 @@
 }
 
 .right-arrow {
+  width: 40px;
+  height: 40px;
+  padding-left: 5px;
+}
+
+@media screen and (min-width: 1400px) {
   width: 70px;
   height: 70px;
   padding-left: 10px;
 }
-
 
 @-webkit-keyframes hvr-pulse {
   25% {
