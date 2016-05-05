@@ -49,7 +49,7 @@ designs = Design.create([
     title: "Gif test",
     description: "Another scene made in Cryengine, figuring out things as I go. Focusing on lighting and atmospherics.",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/13449/screenshots/2680359/giphy2.gif",
-    user_id: 1
+    user_id: 6
   },
 
   {
@@ -81,6 +81,13 @@ designs = Design.create([
   },
 
   {
+    title: "Great Beard, Terrible Player.",
+    description: "Doesn't take much to get too the free throw line, but at least the man can grow some facial hair.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/26059/screenshots/2283762/20_nba_4_thebeard.jpg",
+    user_id: 2
+  },
+
+  {
     title: "Chicken Heads",
     description: "Two options, which one do people prefer?",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/78433/screenshots/2680808/rooster_2016.png",
@@ -102,7 +109,7 @@ designs = Design.create([
   },
 
   {
-    title: "Rude Goldberg Happy Birthday Machine",
+    title: "Rube Goldberg Happy Birthday Machine",
     description: "Dear Scribbble, I hope you find this machine useful to make that moment when everybody sing staring at you a little less awkward. Happy birthday!",
     design_url: "https://d13yacurqjgara.cloudfront.net/users/291221/screenshots/1632938/dribbble_5_yearl.gif",
     user_id: 6
@@ -114,6 +121,105 @@ designs = Design.create([
     design_url: "https://d13yacurqjgara.cloudfront.net/users/70871/screenshots/2680234/crdribbble.jpg",
     user_id: 3
   },
+
+  {
+    title: "Leap Ball-Frog",
+    description: "Stephen Curry and LeBron James Who will come out on top?",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/99875/screenshots/2108890/nba_drib.gif",
+    user_id: 8
+  },
+
+  {
+    title: "Arya there?",
+    description: "Love drawing characters from my favorite show in the world!",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/119484/screenshots/2636852/str.png",
+    user_id: 10
+  },
+
+  {
+    title: "Grandpa Shreds",
+    description: "My grandpa is cooler than yours...",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/285475/screenshots/2106950/kick_push_dribbble.gif",
+    user_id: 5
+  },
+
+  {
+    title: "Outside Lands Patch: Beer",
+    description: "Beer Lands returns to Outside Lands this year, but if August feels too far away, celebrate Cinco De Mayo in Golden Gate Park with your favorite cerveza!",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/31348/screenshots/2694885/patches-16.jpg",
+    user_id: 11
+  },
+
+  {
+    title: "Mountains Galore",
+    description: "Can anyone guess where this was inspired from?",
+    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462300528/l7rvtq45nmt0pnuvf1sj.png",
+    user_id: 10
+  },
+
+  {
+    title: "Baby Blake from Workaholics",
+    description: "He was once a cuddly bear, now he's just Blake, which I guess is still a cuddly bear.",
+    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462078226/dutrsxqfmjocgbv1kwax.png",
+    user_id: 13
+  },
+
+  {
+    title: "Logo Sketch",
+    description: "Design concept for my new startup what do people think?",
+    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462232761/mzw8gy3tydk7vtfo8r9g.png",
+    user_id: 4
+  },
+
+  {
+    title: "Big Mo",
+    description: "This is Mo. Mo is a bad man. Don't be like Mo.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/26844/screenshots/2695178/014.jpg",
+    user_id: 7
+  },
+
+  {
+    title: "MVP, Greatest player ever!",
+    description: "Stop motion design of my favorite player, Steph Curry",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/26052/screenshots/2529956/stepbackcolor_dribbble.gif",
+    user_id: 2
+  },
+
+  {
+    title: "Star Wars gif",
+    description: "I'm so happy Star Wars is back!",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/130603/screenshots/2295709/swamp_800x600_4.gif",
+    user_id: 11
+  },
+
+  {
+    title: "Squirrel City",
+    description: "Two squirrels running along a weirdly colored log.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/11431/screenshots/2422231/untitled-1.jpg",
+    user_id: 9
+  },
+
+  {
+    title: "Superheroes",
+    description: "Launching a series of superhero iPhone apps.",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/10958/screenshots/1368887/shot.jpg",
+    user_id: 6
+  },
+
+  {
+    title: "Twisted",
+    description: "Created for this months LoopdeLoop theme",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/285475/screenshots/1418440/twisted.gif",
+    user_id: 5
+  },
+
+  {
+    title: "Sad Tyrion",
+    description: "Someone ran out of alcohol...",
+    design_url: "https://d13yacurqjgara.cloudfront.net/users/1071667/screenshots/2689805/dribble.jpg",
+    user_id: 10
+  },
+
 
 ])
 
