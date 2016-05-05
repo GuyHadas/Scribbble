@@ -10,7 +10,8 @@ User.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!("users")
 Design.destroy_all
 ActiveRecord::Base.connection.reset_pk_sequence!("designs")
-
+Comment.destroy_all
+ActiveRecord::Base.connection.reset_pk_sequence!("comments")
 
 
 users = User.create([
@@ -115,3 +116,13 @@ designs = Design.create([
   },
 
 ])
+
+comments = []
+
+file = File.read("comments.txt")[1...-2].split("},").each.with_index do |comment, i|
+  comment += "}"
+  comment = comment[1..-1] unless i == 0
+  comments.push(eval(comment))
+end
+
+comments = Comment.create(comments)

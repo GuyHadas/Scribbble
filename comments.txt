@@ -1,0 +1,1 @@
+[{:body=>"Like the color of this, really pretty.", :x_pos=>371, :y_pos=>246, :user_id=>1, :design_id=>3}, {:body=>"Water movement works well with the light, nice job.", :x_pos=>401, :y_pos=>395, :user_id=>1, :design_id=>3}, {:body=>"I like how this color contrasts the rest of the colors nicely.", :x_pos=>466, :y_pos=>174, :user_id=>1, :design_id=>1}]

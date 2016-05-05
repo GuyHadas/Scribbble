@@ -1,0 +1,19 @@
+comments = Comment.all
+
+commentExports = []
+
+comments.each do |comment|
+  p comment
+  commentExports.push({
+    body: comment.body,
+    x_pos: comment.x_pos,
+    y_pos: comment.y_pos,
+    user_id: comment.user_id,
+    design_id: comment.design_id
+  })
+end
+
+
+File.write("./comments.txt", commentExports)
+
+p commentExports

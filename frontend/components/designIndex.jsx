@@ -1,6 +1,10 @@
 var React = require("react");
 var ReactDOM = require("react-dom");
 var HashHistory = require('react-router').hashHistory;
+var Infinite = require('react-infinite');
+var Masonry = require('react-masonry-component');
+
+
 
 var DesignStore = require("../stores/designStore.js");
 var ClientActions = require("../actions/clientActions.js");
@@ -8,6 +12,7 @@ var UserStore = require("../stores/userStore.js");
 
 var DesignCard = require("./designCard.jsx");
 var DesignShow = require("./designShow.jsx");
+
 
 
 var DesignIndex = React.createClass({
@@ -30,6 +35,7 @@ var DesignIndex = React.createClass({
     }
 
     $('body').scrollTop(0);
+    console.log($('.infinite').children().addClass('design-index-list'));
   },
 
   __onDesignsChange: function() {
@@ -63,12 +69,21 @@ var DesignIndex = React.createClass({
     });
 
     return (
-      <ul className="design-index-list">
-        {designIndexList}
-      </ul>
-
+    <ul className={"design-index-list"}>
+      {designIndexList}
+    </ul>
     );
   }
 });
 
 module.exports = DesignIndex ;
+
+// <Infinite containerHeight={1500} className={"infinite"} elementHeight={100} useWindowAsScrollContainer={false}>
+//     </Infinite>
+
+// <Masonry
+//           className={'design-index-list'} // default ''
+//           elementType={'ul'} // default 'div'
+//           options={{}} // default {}
+//           disableImagesLoaded={false} // default false
+//       >
