@@ -152,6 +152,8 @@ var DesignShow = React.createClass({
   },
 
   openCommentForm: function(e) {
+    $('body').off('keydown', this.handleKey);
+
     this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
     this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
 
@@ -163,6 +165,7 @@ var DesignShow = React.createClass({
 
   closeCommentForm: function() {
     this.setState({ commentFormOpen: false});
+    $('body').on('keydown', this.handleKey);
   },
 
   render: function() {
