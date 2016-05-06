@@ -19,14 +19,15 @@
 
 ### Scribbble Splash Page
 
-![splash]
-[splash]: ./screenshots/splash.png
-
 Scribbble's home page layout is intended to immerse the visitor into a colorful and beautiful world that illustrates the work of Scribbble's community.
 
 Scribbble handles secure user authentication and a demo account for quick accessibility to explore. Scribbble is a single-page application in which the root page renders the splash page when 'UserStore.currentUser()' returns nil, and renders the index page otherwise. Various error messages are easily accessible across components via the 'ErrorStore'.
 
 Allowing for multiple sessions creates a bug-free experience regardless of the amount of people using the demo account.
+
+![splash]
+[splash]: ./screenshots/splash.png
+
 
 #### Sample Authentication Code Snippets
 
@@ -114,15 +115,16 @@ end
 
 ### Design creation and browsing
 
+Scribbble takes advantage of Cloudinary's API to upload and host images. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
+
+The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
+
+
 ![designIndex]
 [designIndex]: ./screenshots/designIndex.png
 
 ![designCreation]
 [designCreation]: ./screenshots/designCreation.png
-
-Scribbble takes advantage of Cloudinary's API to upload and host images. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
-
-The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
 
 #### Sample Design Index/Creation Code Snippets
 
@@ -174,133 +176,143 @@ render: function() {
 
 ### Individual Design Page
 
+The 'DesignShow' show component is optimized for multiple screen sizes taking advantage of CSS' media queries. It also contains a guided tour to teach the user how to best interact with the unique comments feature.
+
+'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
+
 ![designShow]
  [designShow]: ./screenshots/designShow.png
 
 ![designWalkthrough]
 [designWalkthrough]: ./screenshots/designWalkthrough.png
 
-The 'DesignShow' show component is optimized for multiple screen sizes taking advantage of CSS' media queries. It also contains a guided tour to teach the user how to best interact with the unique comments feature.
-
-'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
-
 #### Sample Design Show
 
 ```javascript
 var DesignShow = React.createClass({
 
-...
+  ...
 
-prevDesignHandler: function() {
-  var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
-  if (prevDesignIdx < 0) {
-    var prevDesignId = this.designs[this.designs.length - 1].id.toString();
+  prevDesignHandler: function() {
+    var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
+    if (prevDesignIdx < 0) {
+      var prevDesignId = this.designs[this.designs.length - 1].id.toString();
+    } else {
+      prevDesignId = this.designs[prevDesignIdx].id.toString();
+    }
+
+    HashHistory.push("/designs/" + prevDesignId);
+  },
+
+  nextDesignHandler: function() {
+    var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
+
+    if (nextDesignIdx === this.designs.length) {
+      var nextDesignId = this.designs[0].id;
+    } else {
+      nextDesignId = this.designs[nextDesignIdx].id.toString();
+    }
+
+    HashHistory.push("/designs/" + nextDesignId);
+  },
+
+  ...
+
+  openCommentForm: function(e) {
+    $('body').off('keydown', this.handleKey);
+
+    this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
+    this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
+
+    this.setState({
+      commentFormOpen: true,
+      commentFormPos: [this.xPos, this.yPos]
+    });
+  },
+
+  closeCommentForm: function() {
+    this.setState({ commentFormOpen: false});
+    $('body').on('keydown', this.handleKey);
+  },
+
+  ...
+
+  if (this.state.commentPos.length > 0) {
+    //adjust position for image size
+    var left = this.state.commentPos[0] - 13;
+    var top = this.state.commentPos[1] - 25;
+
+    var commentPin = <img
+      src="yellowPin.svg"
+      id="yellow-comment-pin"
+      className="hvr-pulse"
+      style={{
+        width: "25px",
+        height: "25px",
+        left: left,
+        top: top,
+        position: "absolute",
+      }}/>;
   } else {
-    prevDesignId = this.designs[prevDesignIdx].id.toString();
+    commentPin = <img
+      src="yellowPin.svg"
+      id="yellow-comment-pin"
+      className="hvr-pulse"
+      style={{
+        opacity: "0",
+        width: "25px",
+        height: "25px",
+        left: 0,
+        top: 0,
+        position: "absolute",
+      }}/>;
   }
 
-  HashHistory.push("/designs/" + prevDesignId);
-},
-
-nextDesignHandler: function() {
-  var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
-
-  if (nextDesignIdx === this.designs.length) {
-    var nextDesignId = this.designs[0].id;
-  } else {
-    nextDesignId = this.designs[nextDesignIdx].id.toString();
+  if (this.state.commentFormOpen) {
+    var commentForm = <CommentForm
+      closeCommentForm={this.closeCommentForm}
+      xPos={this.xPos}
+      yPos={this.yPos}
+      designId={this.state.design.id}
+      userId={this.state.currentUser.user.id}
+      />;
+    //adjust position for image size
+    var leftFormPin = this.state.commentFormPos[0] - 13;
+    var topFormPin = this.state.commentFormPos[1] - 25;
+    var commentFormPin = <img
+      className="hvr-pulse"
+      src="greenPin.svg"
+      style={{
+        width: "25px",
+        height: "25px",
+        left: leftFormPin,
+        top: topFormPin,
+        position: "absolute",
+      }}/>;
+    var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
   }
-
-  HashHistory.push("/designs/" + nextDesignId);
-},
-
-...
-
-openCommentForm: function(e) {
-  $('body').off('keydown', this.handleKey);
-
-  this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
-  this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
-
-  this.setState({
-    commentFormOpen: true,
-    commentFormPos: [this.xPos, this.yPos]
-  });
-},
-
-closeCommentForm: function() {
-  this.setState({ commentFormOpen: false});
-  $('body').on('keydown', this.handleKey);
-},
-
-...
-
-if (this.state.commentPos.length > 0) {
-  //adjust position for image size
-  var left = this.state.commentPos[0] - 13;
-  var top = this.state.commentPos[1] - 25;
-
-  var commentPin = <img
-    src="yellowPin.svg"
-    id="yellow-comment-pin"
-    className="hvr-pulse"
-    style={{
-      width: "25px",
-      height: "25px",
-      left: left,
-      top: top,
-      position: "absolute",
-    }}/>;
-} else {
-  commentPin = <img
-    src="yellowPin.svg"
-    id="yellow-comment-pin"
-    className="hvr-pulse"
-    style={{
-      opacity: "0",
-      width: "25px",
-      height: "25px",
-      left: 0,
-      top: 0,
-      position: "absolute",
-    }}/>;
-}
-
-if (this.state.commentFormOpen) {
-  var commentForm = <CommentForm
-    closeCommentForm={this.closeCommentForm}
-    xPos={this.xPos}
-    yPos={this.yPos}
-    designId={this.state.design.id}
-    userId={this.state.currentUser.user.id}
-    />;
-  //adjust position for image size
-  var leftFormPin = this.state.commentFormPos[0] - 13;
-  var topFormPin = this.state.commentFormPos[1] - 25;
-  var commentFormPin = <img
-    className="hvr-pulse"
-    src="greenPin.svg"
-    style={{
-      width: "25px",
-      height: "25px",
-      left: leftFormPin,
-      top: topFormPin,
-      position: "absolute",
-    }}/>;
-  var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-}
 
 ...
 });
 ```
 
-### Tags
+### Comments
 
-As with notebooks, tags are stored in the database through a `tag` table and a join table.  The `tag` table contains the columns `id` and `tag_name`.  The `tagged_notes` table is the associated join table, which contains three columns: `id`, `tag_id`, and `note_id`.  
+Scribbble comments are unique, each one lives at a specific spot on their respective design. Hovering over comments in the 'commentBox' displays their location on the design while clicking on the design creates a comment at that location.
 
-Tags are maintained on the frontend in the `TagStore`.  Because creating, editing, and destroying notes can potentially affect `Tag` objects, the `NoteIndex` and the `NotebookIndex` both listen to the `TagStore`.  It was not necessary to create a `Tag` component, as tags are simply rendered as part of the individual `Note` components.  
+Green comment pins reference a comment being created, while yellow comment pins reference a comment being viewed.
 
-![tag screenshot](https://github.com/appacademy/sample-project-proposal/blob/master/docs/tagScreenshot.png)
+In addition to having body, design_id, and user_id columns in the database, comments contain X and Y coordinates that eventually pertain to their parent div (the design they belong to).
+
+Scribbble's API efficiently returns each designs' comments through a single query to the database.
+
+Ex. Comment Box
+![commentBox]
+[commentBox]: ./screenshots/commentBox.png
+
+![commentPins]
+[commentPins]: ./screenshots/commentPins.png
+
 
 ## Future Directions for the Project
 
