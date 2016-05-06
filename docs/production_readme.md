@@ -1,30 +1,107 @@
-# FresherNote
+# Scribbble
 
-[FresherNote live][heroku] **NB:** This should be a link to your production site
+[Scribbble][heroku] is a web application that allows the design community to give feedback throughout their design process. Inspired by Dribbble.com, Scribbble is built using Ruby on Rails and React.js.
 
-[heroku]: http://www.herokuapp.com
 
-FresherNote is a full-stack web application inspired by Evernote.  It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Flux architectural framework on the frontend.  
+[heroku]: http://www.scribbble.herokuapp.com
 
-## Features & Implementation
+##Scribbble Features
 
- **NB**: don't copy and paste any of this.  Many folks will implement similar features, and many employers will see the READMEs of a lot of a/A grads.  You must write in a way that distinguishes your README from that of other students', but use this as a guide for what topics to cover.  
+* Secure user authentication and easy access to explore Scribbble via a demo account
+* Adding new designs to share your current portfolio pieces
+* Browse user uploaded designs
+* Guided features tour for experimental UX
+* View Comments along with a pointer to where they live on the design
+* Comment creation via a location on the design
 
-### Single-Page App
 
-FresherNote is truly a single-page; all content is delivered on one static page.  The root page listens to a `SessionStore` and renders content based on a call to `SessionStore.currentUser()`.  Sensitive information is kept out of the frontend of the app by making an API call to `SessionsController#get_user`.
+## Scribbble Walk-through
+
+### Scribbble Splash Page
+
+![splash]
+[splash]: ./screenshots/splash.png
+
+Scribbble's home page layout is intended to immerse the visitor into the colorful and beautiful world that illustrates the work of Scribbble's community.
+
+Scribbble handles secure user authentication and a demo account for quick accessibility to explore. Scribbble is a single-page application in which the root page renders the splash page when 'UserStore.currentUser()' returns nil, and renders the index page otherwise. Various error messages are easily accessible across components via the 'ErrorStore'.
+
+Allowing for multiple sessions makes it a bug-free experience regardless of the amount of people using the demo account.
+
+#### Various Authentication Code Snippets
 
 ```ruby
 class Api::SessionsController < ApplicationController
-    def get_user
-      if current_user
-        render :current_user
-      else
-        render json: errors.full_messages
-      end
+
+  def create
+    @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
+    if @user
+      login_user!(@user)
+      render :show
+    else
+      @errors = ["Invalid Username or Password"]
+      render :show, status: 401
     end
- end
-  ```
+  end
+
+end
+
+class ApplicationController < ActionController::Base
+
+  def current_user
+    return nil unless session[:session_token]
+    @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+  def login_user!(user)
+    user.reset_session_token!
+    session[:session_token] = user.session_token
+  end
+
+  def logout_user!
+    if current_user
+      current_user.reset_session_token!
+    end
+    session[:session_token] = nil
+  end
+
+
+end
+
+class User < ActiveRecord::Base
+
+  def self.generate_session_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def ensure_session_token
+    self.session_token ||= self.class.generate_session_token
+  end
+
+  def reset_session_token!
+    self.session_token = self.class.generate_session_token
+    self.save!
+    self.session_token
+  end
+
+  def password=(password)
+    @password = password
+    self.password_digest = BCrypt::Password.create(password)
+  end
+
+  def is_password?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def self.find_by_credentials(username, password)
+    user = User.find_by(username: username)
+    return nil if user.nil?
+    user.is_password?(password) ? user : nil
+  end
+
+end
+
+```
 
 ### Note Rendering and Editing
 
