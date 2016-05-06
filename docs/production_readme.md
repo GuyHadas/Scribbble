@@ -218,81 +218,20 @@ var DesignShow = React.createClass({
 
   ...
 
-  openCommentForm: function(e) {
-    $('body').off('keydown', this.handleKey);
-
-    this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
-    this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
-
-    this.setState({
-      commentFormOpen: true,
-      commentFormPos: [this.xPos, this.yPos]
-    });
-  },
-
-  closeCommentForm: function() {
-    this.setState({ commentFormOpen: false});
-    $('body').on('keydown', this.handleKey);
-  },
+  if (this.state.design.design_url) {
+    if (!this.state.commentFormOpen) {
+      var designImgShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+    }
+    var designImage = <img
+      id="design-img"
+      src={this.state.design.design_url}
+      onClick={this.openCommentForm}
+      style={{boxShadow: designImgShadow}}
+    />;
+  }
 
   ...
 
-  if (this.state.commentPos.length > 0) {
-    //adjust position for image size
-    var left = this.state.commentPos[0] - 13;
-    var top = this.state.commentPos[1] - 25;
-
-    var commentPin = <img
-      src="yellowPin.svg"
-      id="yellow-comment-pin"
-      className="hvr-pulse"
-      style={{
-        width: "25px",
-        height: "25px",
-        left: left,
-        top: top,
-        position: "absolute",
-      }}/>;
-  } else {
-    commentPin = <img
-      src="yellowPin.svg"
-      id="yellow-comment-pin"
-      className="hvr-pulse"
-      style={{
-        opacity: "0",
-        width: "25px",
-        height: "25px",
-        left: 0,
-        top: 0,
-        position: "absolute",
-      }}/>;
-  }
-
-  if (this.state.commentFormOpen) {
-    var commentForm = <CommentForm
-      closeCommentForm={this.closeCommentForm}
-      xPos={this.xPos}
-      yPos={this.yPos}
-      designId={this.state.design.id}
-      userId={this.state.currentUser.user.id}
-      />;
-    //adjust position for image size
-    var leftFormPin = this.state.commentFormPos[0] - 13;
-    var topFormPin = this.state.commentFormPos[1] - 25;
-    var commentFormPin = <img
-      className="hvr-pulse"
-      src="greenPin.svg"
-      style={{
-        width: "25px",
-        height: "25px",
-        left: leftFormPin,
-        top: topFormPin,
-        position: "absolute",
-      }}/>;
-    var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
-  }
-
-...
 });
 ```
 
@@ -313,6 +252,94 @@ Ex. Comment Box
 Ex. Comment Pins
 ![commentPins]
 [commentPins]: ./screenshots/commentPins.png
+
+
+```javascript
+var DesignShow = React.createClass({
+
+...
+
+openCommentForm: function(e) {
+  $('body').off('keydown', this.handleKey);
+
+  this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
+  this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
+
+  this.setState({
+    commentFormOpen: true,
+    commentFormPos: [this.xPos, this.yPos]
+  });
+},
+
+closeCommentForm: function() {
+  this.setState({ commentFormOpen: false});
+  $('body').on('keydown', this.handleKey);
+},
+
+...
+
+if (this.state.commentPos.length > 0) {
+  //adjust position for image size
+  var left = this.state.commentPos[0] - 13;
+  var top = this.state.commentPos[1] - 25;
+
+  var commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: left,
+      top: top,
+      position: "absolute",
+    }}/>;
+} else {
+  commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      opacity: "0",
+      width: "25px",
+      height: "25px",
+      left: 0,
+      top: 0,
+      position: "absolute",
+    }}/>;
+}
+
+...
+
+if (this.state.commentFormOpen) {
+  var commentForm = <CommentForm
+    closeCommentForm={this.closeCommentForm}
+    xPos={this.xPos}
+    yPos={this.yPos}
+    designId={this.state.design.id}
+    userId={this.state.currentUser.user.id}
+    />;
+  //adjust position for image size
+  var leftFormPin = this.state.commentFormPos[0] - 13;
+  var topFormPin = this.state.commentFormPos[1] - 25;
+  var commentFormPin = <img
+    className="hvr-pulse"
+    src="greenPin.svg"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: leftFormPin,
+      top: topFormPin,
+      position: "absolute",
+    }}/>;
+  var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+}
+
+...
+
+});
+
+```
 
 
 ## Future Directions for the Project
