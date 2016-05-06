@@ -18,19 +18,3 @@ var DesignCard = React.createClass({
 });
 
 module.exports = DesignCard;
-
-// getInitialState: function() {
-//
-// },
-//
-// componentDidMount: function() {
-//
-// },
-//
-// componentWillUnmount: function() {
-//
-// },
-//
-// __onChange: function() {
-//
-// },

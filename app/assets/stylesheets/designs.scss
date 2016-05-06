@@ -313,9 +313,11 @@
 }
 
 @media screen and (min-width: 1400px) {
-  width: 70px;
-  height: 70px;
-  padding-right: 10px;
+  .left-arrow {
+    width: 70px;
+    height: 70px;
+    padding-right: 10px;
+  }
 }
 
 .right-design {
@@ -359,9 +361,11 @@
 }
 
 @media screen and (min-width: 1400px) {
-  width: 70px;
-  height: 70px;
-  padding-left: 10px;
+  .right-arrow {
+    width: 70px;
+    height: 70px;
+    padding-left: 10px;
+  }
 }
 
 @-webkit-keyframes hvr-pulse {

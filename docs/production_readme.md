@@ -1,6 +1,6 @@
 # Scribbble
 
-[Scribbble][heroku] is a web application that allows the design community to give feedback throughout their design process. Inspired by Dribbble.com, Scribbble is built using Ruby on Rails and React.js.
+[Scribbble][heroku] is a web application that allows the design community to give feedback throughout their design process. Inspired by Dribbble.com, Scribbble is built using Ruby on Rails on the backend, React.js with a Flux architectural framework  the frontend, and a PostgreSQL database.
 
 
 [heroku]: http://www.scribbble.herokuapp.com
@@ -22,16 +22,18 @@
 ![splash]
 [splash]: ./screenshots/splash.png
 
-Scribbble's home page layout is intended to immerse the visitor into the colorful and beautiful world that illustrates the work of Scribbble's community.
+Scribbble's home page layout is intended to immerse the visitor into a colorful and beautiful world that illustrates the work of Scribbble's community.
 
 Scribbble handles secure user authentication and a demo account for quick accessibility to explore. Scribbble is a single-page application in which the root page renders the splash page when 'UserStore.currentUser()' returns nil, and renders the index page otherwise. Various error messages are easily accessible across components via the 'ErrorStore'.
 
-Allowing for multiple sessions makes it a bug-free experience regardless of the amount of people using the demo account.
+Allowing for multiple sessions creates a bug-free experience regardless of the amount of people using the demo account.
 
-#### Various Authentication Code Snippets
+#### Sample Authentication Code Snippets
 
 ```ruby
 class Api::SessionsController < ApplicationController
+
+  ...
 
   def create
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
@@ -47,6 +49,8 @@ class Api::SessionsController < ApplicationController
 end
 
 class ApplicationController < ActionController::Base
+
+  ...
 
   def current_user
     return nil unless session[:session_token]
@@ -69,6 +73,8 @@ class ApplicationController < ActionController::Base
 end
 
 class User < ActiveRecord::Base
+
+  ...
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64
@@ -103,15 +109,65 @@ end
 
 ```
 
-### Note Rendering and Editing
+### Design creation and browsing
 
-  On the database side, the notes are stored in one table in the database, which contains columns for `id`, `user_id`, `content`, and `updated_at`.  Upon login, an API call is made to the database which joins the user table and the note table on `user_id` and filters by the current user's `id`.  These notes are held in the `NoteStore` until the user's session is destroyed.  
+![designIndex]
+[designIndex]: ./screenshots/designIndex.png
 
-  Notes are rendered in two different components: the `CondensedNote` components, which show the title and first few words of the note content, and the `ExpandedNote` components, which are editable and show all note text.  The `NoteIndex` renders all of the `CondensedNote`s as subcomponents, as well as one `ExpandedNote` component, which renders based on `NoteStore.selectedNote()`. The UI of the `NoteIndex` is taken directly from Evernote for a professional, clean look:  
+![designCreation]
+[designCreation]: ./screenshots/designCreation.png
 
-![image of notebook index](https://github.com/appacademy/sample-project-proposal/blob/master/docs/noteIndex.png)
+Designs are created and hosted on Cloudinary through their API. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
 
-Note editing is implemented using the Quill.js library, allowing for a Word-processor-like user experience.
+The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
+
+#### Sample Design Index/Creation Code Snippets
+
+```ruby
+var DesignIndex = React.createClass({
+
+...
+
+componentDidMount: function() {
+  this.designStoreListener = DesignStore.addListener(this.__onDesignsChange);
+  this.userStoreListener = UserStore.addListener(this.__onUserChange);
+  ClientActions.fetchDesigns();
+
+  if (!this.state.currentUser) {
+    HashHistory.push("/");
+  }
+
+  if (this.props.params.designId) {
+    HashHistory.push("/designs/" + this.props.params.designId);
+  }
+
+  $('body').scrollTop(0);
+},
+
+__onDesignsChange: function() {
+  this.setState({designs: DesignStore.all()});
+},
+
+__onUserChange: function() {
+  this.setState({ currentUser: UserStore.currentUser() });
+},
+
+...
+
+render: function() {
+  var designIndexList = this.state.designs.map(function(design) {
+    return <DesignCard key={design.id} design={design}/>;
+  });
+
+  return (
+  <ul className={"design-index-list"}>
+    {designIndexList}
+  </ul>
+  );
+}
+});
+
+```
 
 ### Notebooks
 
