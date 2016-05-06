@@ -231,6 +231,7 @@ var DesignShow = React.createClass({
         designId={this.state.design.id}
         userId={this.state.currentUser.user.id}
         />;
+      //adjust position for image size
       var leftFormPin = this.state.commentFormPos[0] - 13;
       var topFormPin = this.state.commentFormPos[1] - 25;
       var commentFormPin = <img

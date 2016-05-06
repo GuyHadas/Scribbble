@@ -10,7 +10,7 @@
 * Secure user authentication and easy access to explore Scribbble via a demo account
 * Adding new designs to share your current portfolio pieces
 * Browse user uploaded designs
-* Guided features tour for experimental UX
+* Guided tour showcasing experimental UX features
 * View Comments along with a pointer to where they live on the design
 * Comment creation via a location on the design
 
@@ -33,8 +33,6 @@ Allowing for multiple sessions creates a bug-free experience regardless of the a
 ```ruby
 class Api::SessionsController < ApplicationController
 
-  ...
-
   def create
     @user = User.find_by_credentials(params[:user][:username], params[:user][:password])
     if @user
@@ -45,6 +43,8 @@ class Api::SessionsController < ApplicationController
       render :show, status: 401
     end
   end
+
+  ...
 
 end
 
@@ -69,6 +69,7 @@ class ApplicationController < ActionController::Base
     session[:session_token] = nil
   end
 
+  ...
 
 end
 
@@ -105,6 +106,8 @@ class User < ActiveRecord::Base
     user.is_password?(password) ? user : nil
   end
 
+  ...
+
 end
 
 ```
@@ -117,13 +120,13 @@ end
 ![designCreation]
 [designCreation]: ./screenshots/designCreation.png
 
-Designs are created and hosted on Cloudinary through their API. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
+Scribbble takes advantage of Cloudinary's API to upload and host images. The 'DesignIndex' component renders individual 'DesignCard' components which takes the visitor to an individual 'DesignShow' component.
 
 The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to decide whether to send the visitor back to the home page on logout and which designs to show in the index respectively.
 
 #### Sample Design Index/Creation Code Snippets
 
-```ruby
+```javascript
 var DesignIndex = React.createClass({
 
 ...
@@ -169,21 +172,126 @@ render: function() {
 
 ```
 
-### Notebooks
+### Individual Design Page
 
-Implementing Notebooks started with a notebook table in the database.  The `Notebook` table contains two columns: `title` and `id`.  Additionally, a `notebook_id` column was added to the `Note` table.  
+![designShow]
+ [designShow]: ./screenshots/designShow.png
 
-The React component structure for notebooks mirrored that of notes: the `NotebookIndex` component renders a list of `CondensedNotebook`s as subcomponents, along with one `ExpandedNotebook`, kept track of by `NotebookStore.selectedNotebook()`.  
+![designWalkthrough]
+[designWalkthrough]: ./screenshots/designWalkthrough.png
 
-`NotebookIndex` render method:
+The 'DesignShow' show component is optimized for multiple screen sizes taking advantage of CSS' media queries. It also contains a guided tour to teach the user how to best interact with the unique comments feature.
+
+'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
+
+#### Sample Design Show
 
 ```javascript
-render: function () {
-  return ({this.state.notebooks.map(function (notebook) {
-    return <CondensedNotebook notebook={notebook} />
+var DesignShow = React.createClass({
+
+...
+
+prevDesignHandler: function() {
+  var prevDesignIdx = this.designs.indexOf(this.state.design) - 1;
+  if (prevDesignIdx < 0) {
+    var prevDesignId = this.designs[this.designs.length - 1].id.toString();
+  } else {
+    prevDesignId = this.designs[prevDesignIdx].id.toString();
   }
-  <ExpandedNotebook notebook={this.state.selectedNotebook} />)
+
+  HashHistory.push("/designs/" + prevDesignId);
+},
+
+nextDesignHandler: function() {
+  var nextDesignIdx = this.designs.indexOf(this.state.design) + 1;
+
+  if (nextDesignIdx === this.designs.length) {
+    var nextDesignId = this.designs[0].id;
+  } else {
+    nextDesignId = this.designs[nextDesignIdx].id.toString();
+  }
+
+  HashHistory.push("/designs/" + nextDesignId);
+},
+
+...
+
+openCommentForm: function(e) {
+  $('body').off('keydown', this.handleKey);
+
+  this.xPos = Math.floor(e.pageX - $("#design-img").offset().left);
+  this.yPos = Math.floor(e.pageY - $("#design-img").offset().top);
+
+  this.setState({
+    commentFormOpen: true,
+    commentFormPos: [this.xPos, this.yPos]
+  });
+},
+
+closeCommentForm: function() {
+  this.setState({ commentFormOpen: false});
+  $('body').on('keydown', this.handleKey);
+},
+
+...
+
+if (this.state.commentPos.length > 0) {
+  //adjust position for image size
+  var left = this.state.commentPos[0] - 13;
+  var top = this.state.commentPos[1] - 25;
+
+  var commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: left,
+      top: top,
+      position: "absolute",
+    }}/>;
+} else {
+  commentPin = <img
+    src="yellowPin.svg"
+    id="yellow-comment-pin"
+    className="hvr-pulse"
+    style={{
+      opacity: "0",
+      width: "25px",
+      height: "25px",
+      left: 0,
+      top: 0,
+      position: "absolute",
+    }}/>;
 }
+
+if (this.state.commentFormOpen) {
+  var commentForm = <CommentForm
+    closeCommentForm={this.closeCommentForm}
+    xPos={this.xPos}
+    yPos={this.yPos}
+    designId={this.state.design.id}
+    userId={this.state.currentUser.user.id}
+    />;
+  //adjust position for image size
+  var leftFormPin = this.state.commentFormPos[0] - 13;
+  var topFormPin = this.state.commentFormPos[1] - 25;
+  var commentFormPin = <img
+    className="hvr-pulse"
+    src="greenPin.svg"
+    style={{
+      width: "25px",
+      height: "25px",
+      left: leftFormPin,
+      top: topFormPin,
+      position: "absolute",
+    }}/>;
+  var designUrlShadow = "0px 6px 20px 0px rgba(0,0,0,0.75)";
+}
+
+...
+});
 ```
 
 ### Tags
