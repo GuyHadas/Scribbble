@@ -310,6 +310,7 @@ Ex. Comment Box
 ![commentBox]
 [commentBox]: ./screenshots/commentBox.png
 
+Ex. Comment Pins
 ![commentPins]
 [commentPins]: ./screenshots/commentPins.png
 
