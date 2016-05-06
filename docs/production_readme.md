@@ -341,12 +341,11 @@ if (this.state.commentFormOpen) {
 
 ```
 
-
 ## Future Directions Scribbble
 
 ### Tags
 
-Users can assign various tags in 'DesignForm' which will then allow for a search bar to update 'DesignIndex' based on regex matching.
+Users can assign various tags to their Designs in 'DesignForm' which will then allow users to search and update 'DesignIndex' based on regex matching.
 
 ### Dragable Comments
 
