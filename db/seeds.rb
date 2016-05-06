@@ -211,21 +211,21 @@ designs = Design.create([
   {
     title: "Mountains Galore",
     description: "Can anyone guess where this was inspired from?",
-    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462300528/l7rvtq45nmt0pnuvf1sj.png",
+    design_url: "https://res.cloudinary.com/guyhadas195/image/upload/v1462300528/l7rvtq45nmt0pnuvf1sj.png",
     user_id: 10
   },
 
   {
     title: "Baby Blake from Workaholics",
     description: "He was once a cuddly bear, now he's just Blake, which I guess is still a cuddly bear.",
-    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462078226/dutrsxqfmjocgbv1kwax.png",
+    design_url: "https://res.cloudinary.com/guyhadas195/image/upload/v1462078226/dutrsxqfmjocgbv1kwax.png",
     user_id: 13
   },
 
   {
     title: "Logo Sketch",
     description: "Design concept for my new startup what do people think?",
-    design_url: "http://res.cloudinary.com/guyhadas195/image/upload/v1462232761/mzw8gy3tydk7vtfo8r9g.png",
+    design_url: "https://res.cloudinary.com/guyhadas195/image/upload/v1462232761/mzw8gy3tydk7vtfo8r9g.png",
     user_id: 4
   },
 
