@@ -342,14 +342,12 @@ if (this.state.commentFormOpen) {
 ```
 
 
-## Future Directions for the Project
+## Future Directions Scribbble
 
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for FresherNote are outlined below.
+### Tags
 
-### Search
+Users can assign various tags in 'DesignForm' which will then allow for a search bar to update 'DesignIndex' based on regex matching.
 
-Searching notes is a standard feature of Evernote.  I plan to utilize the Fuse.js library to create a fuzzy search of notes and notebooks.  This search will look go through tags, note titles, notebook titles, and note content.  
+### Dragable Comments
 
-### Direct Messaging
-
-Although this is less essential functionality, I also plan to implement messaging between FresherNote users.  To do this, I will use WebRTC so that notifications of messages happens seamlessly.  
+In addition to clicking on a design to create a comment, users can also drag over a design to create a comment that pertains to a specific area.
