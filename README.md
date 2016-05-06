@@ -40,7 +40,7 @@ Scribbble handles secure user authentication and a demo account for quick access
 Allowing for multiple sessions creates a bug-free experience regardless of the amount of people using the demo account.
 
 ![splash]
-[splash]: .docs/screenshots/splash.png
+[splash]: ./docs/screenshots/splash.png
 
 
 #### Sample Authentication Code Snippets
@@ -135,10 +135,10 @@ The 'DesignIndex' listens for changes in the 'UserStore' and 'DesignStore' to de
 
 
 ![designIndex]
-[designIndex]: .docs/screenshots/designIndex.png
+[designIndex]: ./docs/screenshots/designIndex.png
 
 ![designCreation]
-[designCreation]: .docs/screenshots/designCreation.png
+[designCreation]: ./docs/screenshots/designCreation.png
 
 #### Sample Design Index/Creation Code Snippets
 
@@ -195,10 +195,10 @@ The 'DesignShow' show component is optimized for multiple screen sizes taking ad
 'DesignShow' is a react intensive component that optimizes it's look and experience for several potential states.
 
 ![designShow]
- [designShow]: .docs/screenshots/designShow.png
+ [designShow]: ./docs/screenshots/designShow.png
 
 ![designWalkthrough]
-[designWalkthrough]: .docs/screenshots/designWalkthrough.png
+[designWalkthrough]: ./docs/screenshots/designWalkthrough.png
 
 #### Sample Design Show
 
@@ -261,11 +261,11 @@ Scribbble's API efficiently returns each designs' comments through a single quer
 
 Ex. Comment Box
 ![commentBox]
-[commentBox]: .docs/screenshots/commentBox.png
+[commentBox]: ./docs/screenshots/commentBox.png
 
 Ex. Comment Pins
 ![commentPins]
-[commentPins]: .docs/screenshots/commentPins.png
+[commentPins]: ./docs/screenshots/commentPins.png
 
 
 ```javascript
