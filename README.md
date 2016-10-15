@@ -5,7 +5,7 @@
 [Scribbble][heroku] is a web application that allows the design community to give feedback throughout their design process. Inspired by Dribbble.com, Scribbble is built using Ruby on Rails on the backend, React.js with a Flux architectural framework  the frontend, and a PostgreSQL database.
 
 
-[heroku]: http://www.scribbble.herokuapp.com
+[heroku]: http://scribbble.herokuapp.com
 
 ##Scribbble Preparation
 
