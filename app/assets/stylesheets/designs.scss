@@ -29,6 +29,42 @@
   border-radius: 4px;
 }
 
+@media screen and (min-width: 768px) {
+  .design-url-index-item img {
+    width: 200px;
+    height: 150px;
+  }
+
+  .design-card {
+    width: 200px;
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .design-url-index-item img {
+    width: 300px;
+    height: 225px;
+  }
+
+  .design-card {
+    width: 300px;
+    height: 225px;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .design-url-index-item img {
+    width: 400px;
+    height: 300px;
+  }
+
+  .design-card {
+    width: 400px;
+    height: 300px;
+  }
+}
+
 
 
 
