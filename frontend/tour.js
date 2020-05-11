@@ -13,15 +13,15 @@ var Tour = new Shepherd.Tour({
 var defaultButtons = [
   {
     text: "Back",
-    action() {
-      return this.back()
+    action: function() {
+      return this.back();
     } 
   },
 
   {
     text: "Next",
-    action() {
-      return this.next()
+    action: function() {
+      return this.next();
     } 
   },
 ];
@@ -37,8 +37,8 @@ Tour.addStep({
   buttons: [
     {
       text: "Next",
-      action() {
-          return this.next()
+      action: function() {
+          return this.next();
       }
     },
   ]});
@@ -66,14 +66,14 @@ Tour.addStep({
   buttons: [
     {
       text: "Back",
-      action() {
-        return this.back()
+      action: function() {
+        return this.back();
       } 
     },
     {
       text: "Done",
-      action() {
-        return this.complete()
+      action: function() {
+        return this.complete();
       }
     }
   ]
