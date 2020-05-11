@@ -1,57 +1,80 @@
-var Shepherd = require('tether-shepherd');
+var Shepherd = require('shepherd.js');
 
 var Tour = new Shepherd.Tour({
-  defaults: {
+  defaultStepOptions: {
     classes: 'shepherd-theme-default',
+    cancelIcon: {
+      enabled: true
+    },
+    scrollTo: { behavior: 'smooth', block: 'center' }
   }
 });
 
 var defaultButtons = [
   {
     text: "Back",
-    action: Tour.back
+    action() {
+      return this.back()
+    } 
   },
 
   {
     text: "Next",
-    action: Tour.next
+    action() {
+      return this.next()
+    } 
   },
 ];
 
-Tour.addStep('hoverComment', {
+Tour.addStep({
+  id: 'hoverComment',
   title: 'Hover Over Comments',
   text: 'Hover over a comment to view where it lives on the design.',
-  attachTo: '.design-details-card bottom',
-  showCancelLink: true,
+  attachTo: {
+      element: '.design-details-card',
+      on: 'bottom'
+  },
   buttons: [
     {
       text: "Next",
-      action: Tour.next
+      action() {
+          return this.next()
+      }
     },
   ]});
 
-Tour.addStep('clickComment', {
+Tour.addStep({
+  id: 'clickComment',
   title: 'Click on a Comment',
   text: 'Click on a comment to keep its pin on the design. Rehover comments to remove pin.',
-  attachTo: '.design-details-card left',
-  showCancelLink: true,
+  attachTo: {
+      element: '.design-details-card',
+      on: 'left'
+  },
   buttons: defaultButtons
 });
 
-Tour.addStep('createComment', {
+Tour.addStep({
+  id: 'createComment',
   title: 'Create a Comment',
   text: 'Click anywhere on the design to make a comment at that location.',
-  attachTo: '.design-url-show top',
-  advanceOn: 'createComment',
-  showCancelLink: true,
+  attachTo: {
+    element: '.design-url-show',
+    on: 'left'
+  },
+  // advanceOn: 'createComment',
   buttons: [
     {
       text: "Back",
-      action: Tour.back
+      action() {
+        return this.back()
+      } 
     },
     {
       text: "Done",
-      action: Tour.complete
+      action() {
+        return this.complete()
+      }
     }
   ]
 });
